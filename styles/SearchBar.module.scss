@@ -1,0 +1,20 @@
+.search_box {
+    margin-top: 2rem;
+
+    .search_wrapper {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        svg {
+            width: 2rem;
+            height: 2rem;
+        }
+        .search_input {
+            width: 50%;              
+            border: none;
+            padding: .5rem 1rem;                    
+            font-size: 1.5rem;
+            border-bottom: 2px solid #000;
+        }
+    }    
+}

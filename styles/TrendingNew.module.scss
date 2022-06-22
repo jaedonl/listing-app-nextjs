@@ -1,0 +1,50 @@
+.trending_new {
+    margin-top: 2rem;
+
+    .listing_tab {
+        padding: 0;   
+        display: flex;        
+        align-items: center;
+        gap: 2rem;
+        height: 100%;
+        position: relative;
+        border-bottom: 1px solid #aaa;
+
+        li {            
+            height: 100%;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;                    
+            transition: all .2s ease;                 
+
+            &:hover {
+                border-bottom: 3px solid #000;
+            }
+            &.current {
+                border-bottom: 3px solid #000;
+            }
+
+            button {
+                height: 100%;
+                display: flex;
+                align-items: center; 
+                font-size: 1.5rem;        
+                background: none;
+                border: none;             
+                padding: .5rem .2rem;   
+                cursor: pointer;                
+            }   
+        }
+    }
+
+    .listing_grid {
+        display: flex;
+
+        .listing {
+            flex: 1;
+
+            h3 {
+                margin: 0 0 1rem;
+            }
+        }
+    }
+}

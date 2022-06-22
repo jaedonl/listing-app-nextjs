@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Link from "next/link";
 import styles from "../styles/Header.module.scss";
-import { WorkOutline, HomeOutlined, Storefront, Forum, LiveHelp, FavoriteBorder, PersonOutlineOutlined } from '@mui/icons-material';
+import { WorkOutline, HomeOutlined, Storefront, ForumOutlined, LiveHelpOutlined, FavoriteBorder, PersonOutlineOutlined, Search } from '@mui/icons-material';
 
 
 const Header = () => {
@@ -16,40 +16,50 @@ const Header = () => {
                 <ul>
                     <li>
                         <Link href="/job">
-                            <a><WorkOutline/> Job</a>
+                            <a className={styles.link_icon}><WorkOutline/> Job</a>
                         </Link>
                     </li>
                     <li>
                         <Link href="/housing">
-                            <a><HomeOutlined/> Housing</a>
+                            <a className={styles.link_icon}><HomeOutlined/> Housing</a>
                         </Link>
                     </li>
                     <li>
                         <Link href="/for-sale">
-                            <a><Storefront/> For Sale</a>
+                            <a className={styles.link_icon}><Storefront/> For Sale</a>
                         </Link>
                     </li>
                     <li>
                         <Link href="/community">
-                            <a><Forum/> Community</a>
+                            <a className={styles.link_icon}><ForumOutlined/> Community</a>
                         </Link>
                     </li>
                     <li>
                         <Link href="/qna">
-                            <a><LiveHelp/> QnA</a>
+                            <a className={styles.link_icon}><LiveHelpOutlined/> QnA</a>
                         </Link>
                     </li>
                     <li>
                         <Link href="/dating">
-                            <a><FavoriteBorder/> Dating</a>
+                            <a className={styles.link_icon}><FavoriteBorder/> Dating</a>
                         </Link>
                     </li>
                 </ul>
             </nav>
-            
-            <Link href="/login">
-                <a className={styles.login}><PersonOutlineOutlined/> Login</a>
-            </Link>
+
+            <nav className={styles.right_nav}>
+                <ul>
+                    <li>
+                        <Search onClick={() => setIsSearchOn(!isSearchOn)} />
+                    </li>
+                    <li>
+                        <Link href="/login">
+                            <a className={styles.login}><PersonOutlineOutlined/></a>
+                        </Link>
+                    </li>
+                </ul>                
+            </nav>
+                        
         </nav>
     </header>
   )

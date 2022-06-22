@@ -2,13 +2,26 @@
   padding: 0 2rem;
 }
 
-.main {
+.flex {
+    display: flex;
+    justify-content: space-between;    
+    column-gap: 2rem;
 
+    .main_sections {
+        flex: 7.5;
+    }
+    .aside_banner {
+        flex: 2.5;
+        margin-top: 2rem;
+        
+        .side_ads_banner {    
+            margin-bottom: 1rem;
+        }
+    }
 }
 
-.footer {
 
-}
+
 
 @media (max-width: 600px) {
 

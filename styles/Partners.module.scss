@@ -1,0 +1,51 @@
+.home_partner {
+    margin-top: 2rem;
+    
+    .section_grid {        
+        display: flex;
+        justify-content: space-between;
+        max-height: 12rem;
+
+        .section_left {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            justify-content: center;
+            gap: .5rem;                    
+            flex: 1;
+
+            .grid_item {
+                position: relative;        
+                border: 1px solid #ddd;
+                display: flex;
+                align-items: center;
+                justify-content: center;    
+                cursor: pointer;                
+
+                a {
+                    flex: 1;
+                    display: block;
+                    max-width: 5rem;
+                    margin: 0 auto;                       
+                }                
+
+                &::after {
+                    content: "";
+                    background-color: #000;
+                    position: absolute;                    
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;          
+                    opacity: 0;          
+                    transition: all .1s ease-in;
+                }
+
+                &:hover {
+                    &::after {          
+                        opacity: .5;     
+                    }
+                }
+            }
+        }   
+    }
+}
