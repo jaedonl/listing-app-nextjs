@@ -5,8 +5,9 @@ import styles from '../styles/Home.module.scss'
 import SectionGrid from '../components/Partners'
 import TrendingNew from '../components/TrendingNew'
 import SearchBar from '../components/SearchBar'
+import axios from 'axios'
 
-export default function Home() {
+export default function Home({jobs, jobs2, housings}) {
     return (
         <div className={styles.container}>
             <Head>
@@ -20,7 +21,7 @@ export default function Home() {
                     <div className={styles.main_sections}>
                         <SectionGrid />        
                         <SearchBar />    
-                        <TrendingNew />  
+                        <TrendingNew jobs={jobs} jobs2={jobs2} housings={housings} />  
                     </div>                    
 
                     <aside className={styles.aside_banner}>
@@ -46,3 +47,20 @@ export default function Home() {
         </div>
     )
 }
+
+export const getServerSideProps = async (context) => {                
+    const jobs_res          = await axios.get('http://localhost:3000/api/jobs')     
+    const housings_res      = await axios.get('http://localhost:3000/api/housings')     
+    // const forsales_res      = await axios.get('/api/forsales')     
+    // const communities_res   = await axios.get('/api/communities')     
+    // const qnas_res          = await axios.get('/api/qnas')     
+    
+    return {
+        props: {
+            jobs: jobs_res.data,      
+            jobs2: jobs_res.data, 
+            housings: housings_res.data,       
+        },
+    }
+}
+

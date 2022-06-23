@@ -15,27 +15,27 @@ const Header = () => {
             <nav className={styles.page_nav}>
                 <ul>
                     <li>
-                        <Link href="/job">
+                        <Link href="/jobs">
                             <a className={styles.link_icon}><WorkOutline/> Job</a>
                         </Link>
                     </li>
                     <li>
-                        <Link href="/housing">
+                        <Link href="/housings">
                             <a className={styles.link_icon}><HomeOutlined/> Housing</a>
                         </Link>
                     </li>
                     <li>
-                        <Link href="/for-sale">
+                        <Link href="/forsales">
                             <a className={styles.link_icon}><Storefront/> For Sale</a>
                         </Link>
                     </li>
                     <li>
-                        <Link href="/community">
+                        <Link href="/communities">
                             <a className={styles.link_icon}><ForumOutlined/> Community</a>
                         </Link>
                     </li>
                     <li>
-                        <Link href="/qna">
+                        <Link href="/qnas">
                             <a className={styles.link_icon}><LiveHelpOutlined/> QnA</a>
                         </Link>
                     </li>

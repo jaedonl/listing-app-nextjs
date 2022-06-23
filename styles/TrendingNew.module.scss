@@ -8,9 +8,9 @@
         gap: 2rem;
         height: 100%;
         position: relative;
-        border-bottom: 1px solid #aaa;
+        border-bottom: 1px solid #ddd;
 
-        li {            
+        .tab {            
             height: 100%;
             cursor: pointer;
             border-bottom: 3px solid transparent;                    
@@ -42,8 +42,30 @@
         .listing {
             flex: 1;
 
+            &:first-child {                
+                padding-right: 2rem;
+            }
+            &:last-child {
+                border-left: 1px solid #ddd;
+                padding-left: 2rem;
+            }
+
             h3 {
                 margin: 0 0 1rem;
+            }
+            ul {
+                li {                    
+                    padding: .5rem 0;                    
+                    border-bottom: 1px solid #ddd;
+                    
+                    .job_title {
+                        font-weight: 500;
+                    }
+                    .job_company {
+                        margin-left: 1rem;
+                        color: #444;
+                    }
+                }
             }
         }
     }
