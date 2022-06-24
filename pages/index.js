@@ -7,7 +7,7 @@ import TrendingNew from '../components/TrendingNew'
 import SearchBar from '../components/SearchBar'
 import axios from 'axios'
 
-export default function Home({jobs, jobs2, housings}) {
+export default function Home({jobs, jobs2, housings, housings2}) {
     return (
         <div className={styles.container}>
             <Head>
@@ -21,7 +21,7 @@ export default function Home({jobs, jobs2, housings}) {
                     <div className={styles.main_sections}>
                         <SectionGrid />        
                         <SearchBar />    
-                        <TrendingNew jobs={jobs} jobs2={jobs2} housings={housings} />  
+                        <TrendingNew jobs={jobs} jobs2={jobs2} housings={housings} housings2={housings2} />  
                     </div>                    
 
                     <aside className={styles.aside_banner}>
@@ -60,6 +60,7 @@ export const getServerSideProps = async (context) => {
             jobs: jobs_res.data,      
             jobs2: jobs_res.data, 
             housings: housings_res.data,       
+            housings2: housings_res.data,
         },
     }
 }

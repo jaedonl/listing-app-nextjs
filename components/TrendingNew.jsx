@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react'
 import styles from "../styles/TrendingNew.module.scss";
 import Link from 'next/link';
+import Moment from 'react-moment';
 
-const TrendingNew = ({jobs, jobs2, housings}) => {       
-    const [tab, setTab] = useState('jobs')
-    const [jobList, setJobList] = useState(jobs)    
-    const [housingList, setHousingList] = useState()
+const TrendingNew = ({jobs, jobs2, housings, housings2}) => {       
+    const [tab, setTab] = useState('jobs')    
     
     const [trendingJobs, setTrendingJobs] = useState()
-    const [trendingHousings, setTrendingHousings] = useState()
-    
     const [newestJobs, setNewestJobs] = useState()
+
+    const [trendingHousings, setTrendingHousings] = useState()        
     const [newestHousings, setNewestHousings] = useState()    
+
+    const [trendingList, setTrendingList] = useState()
+    const [newestList, setNewestList] = useState()
 
     useEffect(() => {           
         var listingTabs = document.querySelectorAll(`.${styles.tab}`)        
@@ -21,24 +23,36 @@ const TrendingNew = ({jobs, jobs2, housings}) => {
                 ? listTab.classList.add(`${styles.current}`) 
                 : listTab.classList.remove(`${styles.current}`)            
         });
+
+        if (tab === "jobs") {
+            setTrendingList(trendingJobs)
+            setNewestList(newestJobs)
+        } 
+        else if (tab === "housings") {
+            setTrendingList(trendingHousings)
+            setNewestList(newestHousings)
+        }        
     }, [tab])    
 
     useEffect(() => {                         
         setTrendingJobs(jobs.sort((a, b) => (b.views > a.views) ? 1 : -1))        
-        setTrendingHousings(housings?.sort((a, b) => (a.views > b.views) ? 1 : -1))
-
         setNewestJobs(jobs2.sort((a, b) => (b.createdAt > a.createdAt) ? 1 : -1))
-        setNewestHousings(housings?.sort((a, b) => (b.createdAt > a.createdAt) ? 1 : -1))                 
-    }, [jobList, housingList])
+        
+        setTrendingHousings(housings?.sort((a, b) => (a.views > b.views) ? 1 : -1))        
+        setNewestHousings(housings2?.sort((a, b) => (b.createdAt > a.createdAt) ? 1 : -1))                   
+    }, [jobs, jobs2, housings, housings2])    
 
-    const formatter = () => {
-        Intl.DateTimeFormat("en-GB", {
-            year: "numeric",
-            month: "long",
-            day: "2-digit"
-          });
-    }
-
+    useEffect(() => {
+        if (tab === 'jobs') {
+            setTrendingList(trendingJobs)
+            setNewestList(newestJobs)
+        } else if (tab === 'housings') {
+            setTrendingList(trendingHousings)
+            setNewestList(newestHousings)
+        }
+    }, [trendingJobs, newestJobs, trendingHousings, newestHousings])
+    
+    
     return (
         <section className={styles.trending_new}>
             <h2>Trending / New</h2>
@@ -65,38 +79,94 @@ const TrendingNew = ({jobs, jobs2, housings}) => {
                 <div className={styles.listing}>
                     <h3>Hot listing</h3>
                     <ul>
-                        { trendingJobs?.map((job, idx) => (
+                        { tab === 'jobs' && trendingList && trendingList.map((job, idx) => {
+                            var date = new Date(job.createdAt).toDateString()
+                            return (
                             <li key={idx}>
                                 <Link href={`/jobs/${job._id}`}>
-                                    <a>
-                                        <span className={styles.job_title}>{job.title}</span>
-                                        <span className={styles.job_company}>– {job.company}</span>
-                                        <span> ({job.views})</span>
+                                    <a className={styles.post_flex}>
+                                        <div className={styles.flex_left}>
+                                            <span>({job.views})</span>
+                                            <span className={styles.post_title}> {job.title}</span>
+                                            <span className={styles.job_company}>– {job.company} </span>    
+                                        </div>   
+                                        <div className={styles.flex_right}>
+                                            <Moment date={date} format="YYYY/MM/DD" className={styles.post_date} />    
+                                        </div>                                             
                                     </a>
                                 </Link>
                             </li>
-                        ))}                                            
+                            ) 
+                        })} 
+                        { tab === 'housings' && trendingList && trendingList.map((house, idx) => {
+                            var date = new Date(house.createdAt).toDateString()
+                            var area               
+                            if (house.address) area = house.address[2]      
+                            
+                            return (
+                            <li key={idx}>
+                                <Link href={`/housings/${house._id}`}>
+                                    <a className={`${styles.post_flex} ${styles.housing}`}>
+                                        <div className={styles.flex_left}>
+                                            <span>({house.views})</span>
+                                            <span className={styles.post_title}> {house.title}</span>
+                                        </div>  
+                                        <div className={styles.flex_right}>
+                                            <span className={styles.house_area}>{area}</span>
+                                            <Moment date={date} format="YYYY/MM/DD" className={styles.post_date} />
+                                        </div>                                        
+                                    </a>
+                                </Link>
+                            </li>
+                            )
+                        })}                                               
                     </ul>   
                 </div> 
 
                 <div  className={styles.listing}>
                     <h3>New listing</h3>
                     <ul>
-                        { newestJobs?.map((job, idx) => {
-                            
-
+                        { tab === 'jobs' && newestList && newestList.map((job, idx) => {                                      
+                            var date = new Date(job.createdAt).toDateString()                            
                             return (
                             <li key={idx}>
                                 <Link href={`/jobs/${job._id}`}>
-                                    <a>
-                                        <span className={styles.job_title}>{job.title}</span>
-                                        <span className={styles.job_company}>– {job.company}</span>
-                                        <p>– {job.createdAt}</p>
+                                    <a className={`${styles.post_flex} ${styles.housing}`}>
+                                        <div className={styles.flex_left}>
+                                            <span>({job.views})</span>
+                                            <span className={styles.post_title}> {job.title}</span>
+                                            <span className={styles.job_company}>– {job.company} </span>
+                                        </div>                           
+                                        <div className={styles.flex_right}>
+                                            <Moment date={date} format="YYYY/MM/DD" className={styles.post_date} />
+                                        </div>                                                     
                                     </a>
                                 </Link>
                             </li>
                             )
-                        })}                        
+                        })}        
+                        { tab === 'housings' && newestList && newestList.map((house, idx) => {
+                            var date = new Date(house.createdAt).toDateString()        
+                            var area               
+                            if (house.address) area = house.address[2]                        
+                            
+                            return (
+                            <li key={idx}>
+                                <Link href={`/housings/${house._id}`}>
+                                    <a className={styles.post_flex}>
+                                        <div className={styles.flex_left}>
+                                            <span>({house.views})</span>
+                                            <span className={styles.post_title}> {house.title}</span>                                            
+                                        </div>           
+                                        <div className={styles.flex_right}>
+                                            <span className={styles.house_area}>{area}</span>
+                                            <Moment date={date} format="YYYY/MM/DD" className={styles.post_date} />
+                                        </div>                                                                     
+                                    </a>
+                                </Link>
+                            </li>
+                            )
+                        })}                 
                     </ul>   
                 </div>                 
             </div>  

@@ -57,14 +57,48 @@
                 li {                    
                     padding: .5rem 0;                    
                     border-bottom: 1px solid #ddd;
+
+                    .post_flex {
+                        display: flex;
+                        justify-content: space-between;
+
+                        .flex_left {
+                            flex: 70%;
+                            display: flex;
+                            align-items: center;
+                            
+                            .job_company {
+                                color: #444;
+
+                            }
+                            .post_title {
+                                overflow: hidden;
+                                max-width: 30ch;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                display: inline-block;
+                                max-width: 15rem;
+                            }      
+                        }
+                        
+                        .flex_right {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            &.housing {
+                                flex: 30%;
+                            }
+                            .post_date {
+                                font-size: .8rem;
+                                color: #888;
+                            }
+                            
+                        }
+                        
+                    }
                     
-                    .job_title {
-                        font-weight: 500;
-                    }
-                    .job_company {
-                        margin-left: 1rem;
-                        color: #444;
-                    }
+                    
                 }
             }
         }
