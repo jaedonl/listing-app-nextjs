@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import Head from 'next/head'
 import axios from 'axios'
 import styles from "../../styles/Job.module.scss";
 
