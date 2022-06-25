@@ -1,11 +1,19 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import styles from "../../styles/Job.module.scss";
 
 const Job = ({jobData}) => {
     const [job, setJob] = useState(jobData)    
 
     return (
-        <main>
+        <main className={styles.job_template}>
+             <Head>
+                <title>{job.company} | job description</title>
+                <meta name="description" content={`Job description page for ${job.company}`} />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+
+            <span>Job description</span>
             <h1>{job.title}</h1>
             <h2>{job.company}</h2>
         </main>

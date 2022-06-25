@@ -86,7 +86,7 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
                                 <Link href={`/jobs/${job._id}`}>
                                     <a className={styles.post_flex}>
                                         <div className={styles.flex_left}>
-                                            <span>({job.views})</span>
+                                            <span className={styles.post_views}>({job.views})</span>
                                             <span className={styles.post_title}> {job.title}</span>
                                             <span className={styles.job_company}>– {job.company} </span>    
                                         </div>   
@@ -108,10 +108,10 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
                                 <Link href={`/housings/${house._id}`}>
                                     <a className={`${styles.post_flex} ${styles.housing}`}>
                                         <div className={styles.flex_left}>
-                                            <span>({house.views})</span>
+                                            <span className={styles.post_views}>({house.views})</span>
                                             <span className={styles.post_title}> {house.title}</span>
                                         </div>  
-                                        <div className={styles.flex_right}>
+                                        <div className={`${styles.flex_right} ${styles.housing}`}>
                                             <span className={styles.house_area}>{area}</span>
                                             <Moment date={date} format="YYYY/MM/DD" className={styles.post_date} />
                                         </div>                                        
@@ -133,7 +133,7 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
                                 <Link href={`/jobs/${job._id}`}>
                                     <a className={`${styles.post_flex} ${styles.housing}`}>
                                         <div className={styles.flex_left}>
-                                            <span>({job.views})</span>
+                                            <span className={styles.post_views}>({job.views})</span>
                                             <span className={styles.post_title}> {job.title}</span>
                                             <span className={styles.job_company}>– {job.company} </span>
                                         </div>                           
@@ -155,10 +155,10 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
                                 <Link href={`/housings/${house._id}`}>
                                     <a className={styles.post_flex}>
                                         <div className={styles.flex_left}>
-                                            <span>({house.views})</span>
+                                            <span className={styles.post_views}>({house.views})</span>
                                             <span className={styles.post_title}> {house.title}</span>                                            
                                         </div>           
-                                        <div className={styles.flex_right}>
+                                        <div className={`${styles.flex_right} ${styles.housing}`}>
                                             <span className={styles.house_area}>{area}</span>
                                             <Moment date={date} format="YYYY/MM/DD" className={styles.post_date} />
                                         </div>                                                                     
