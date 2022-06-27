@@ -55,7 +55,7 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
     
     return (
         <section className={styles.trending_new}>
-            <h2>Trending / New</h2>
+            {/* <h2>Trending / New</h2> */}
 
             <menu className={styles.listing_tab}>
                 <li name="jobs" className={`${styles.tab} ${styles.current}`}>
@@ -86,7 +86,7 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
                                 <Link href={`/jobs/${job._id}`}>
                                     <a className={styles.post_flex}>
                                         <div className={styles.flex_left}>
-                                            <span className={styles.post_views}>({job.views})</span>
+                                            <span className={styles.post_views}>[{job.views}]</span>
                                             <span className={styles.post_title}> {job.title}</span>
                                             <span className={styles.job_company}>– {job.company} </span>    
                                         </div>   
