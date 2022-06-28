@@ -10,7 +10,7 @@ const Job = ({jobData}) => {
 
     return (
         <main className={styles.job_template}>
-             <Head>
+            <Head>
                 <title>{job.company} | job description</title>
                 <meta name="description" content={`Job description page for ${job.company}`} />
                 <link rel="icon" href="/favicon.ico" />
@@ -23,22 +23,26 @@ const Job = ({jobData}) => {
                 </ul>
             </nav>
             
-            <section className={styles.job_info}>
-                <span>Job description</span>
-                <div>
-                    <div className={styles.image_wrapper}>
-                        <Image src={job.img[0]} width="100%" height="100%" layout="responsive" objectFit="contain" className={styles.image} />
-                    </div>                    
+            <section className={styles.job_info}>                
+                <div className={styles.job_heading}>
                     <h1>{job.title}</h1>
-                </div>                
-                <h2>{job.company}</h2>
+                    <div className={styles.title_flex}>
+                        <div className={styles.image_wrapper}>                            
+                            <Image src={job.img[0]} layout="fill" objectFit="cover" className={styles.image} />
+                        </div>            
+                        <div>
+                            <h2>{job.company}</h2>      
+                        </div>                        
+                    </div>                    
+                </div>                                
             </section>            
         </main>
     )
 }
 
 
-export const getServerSideProps = async ({params}) => {               
+export const getServerSideProps = async ({params, query}) => {               
+    console.log(query)
     const param = params.id    
     const job_res = await axios.get(`http://localhost:3000/api/jobs/${param}`)      
     

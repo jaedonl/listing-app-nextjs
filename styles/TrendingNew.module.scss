@@ -17,10 +17,10 @@
             transition: all .2s ease;                 
 
             &:hover {
-                border-bottom: 3px solid #000;
+                border-bottom: 3px solid #f68a06;
             }
             &.current {
-                border-bottom: 3px solid #000;
+                border-bottom: 3px solid #f68a06;
             }
 
             button {
@@ -38,16 +38,16 @@
 
     .listing_grid {
         display: flex;
-
+        
         .listing {
             flex: 1;
 
             &:first-child {                
-                padding-right: 2rem;
+                padding-right: 1rem;
             }
             &:last-child {
                 border-left: 1px solid #ddd;
-                padding-left: 2rem;
+                padding-left: 1rem;
             }
 
             h3 {
@@ -56,7 +56,23 @@
             ul {
                 li {                    
                     padding: .5rem 0;                    
-                    border-bottom: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;         
+                    
+                    &:hover {
+                        color: #f68a06;
+                        .post_flex {
+                            .flex_left {
+                                .job_company {
+                                    color: #f68a06;
+                                }                             
+                            }
+                            .flex_right {
+                                .post_date {
+                                    color: #f68a06;
+                                }
+                            }
+                        }
+                    }
 
                     .post_flex {
                         display: flex;

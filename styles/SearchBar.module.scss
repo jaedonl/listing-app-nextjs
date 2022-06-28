@@ -1,20 +1,81 @@
 .search_box {
     margin-top: 5rem;
+    
+    &.page_jobs {
+        margin-top: 0;
+    }
 
     .search_wrapper {
         height: 100%;
         display: flex;
-        align-items: center;
-        svg {
-            width: 2rem;
-            height: 2rem;
+        align-items: center;                        
+        
+        .input_wrapper {
+            position: relative;
+            width: 100%;    
+            
+            label {
+                height: 100%;
+                width: 3rem;              
+                position: absolute;
+                left: .0;            
+                top: 0;
+                padding: .5rem;
+                svg {
+                    width: 2rem;
+                    height: 2rem;
+                    color: #f68a06;                          
+                }
+            }
+            
+            .search_input {  
+                width: 100%;                                    
+                padding: .5rem 1rem .5rem 3rem;                    
+                font-size: 1.5rem;
+                border: 1px solid #ddd;
+                border-radius: 0;
+                height: 3rem;
+            }
         }
-        .search_input {
-            width: 50%;              
-            border: none;
+        
+
+        .location_select {            
             padding: .5rem 1rem;                    
             font-size: 1.5rem;
-            border-bottom: 2px solid #000;
+            border: 1px solid #ddd;
+            border-left: none;
+            border-radius: 0;
+            height: 3rem;
         }
+
+        .search_submit {            
+            padding: .5rem 1rem;                    
+            font-size: 1.5rem;
+            background: #f68a06;
+            color: #fff;
+            border: none;
+            border-radius: .2rem;
+            height: 3rem;
+            cursor: pointer;
+            transition: all .1s ease-in;     
+            position: relative;
+                
+            &::after {
+                content: "";
+                background-color: #000;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                transition: all 0.1s ease-in;
+            }   
+            &:hover {
+                &::after {          
+                    opacity: .1;     
+                }
+            }
+        }        
     }    
 }

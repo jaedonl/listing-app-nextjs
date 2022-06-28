@@ -38,23 +38,18 @@ const Header = () => {
                         <Link href="/qnas">
                             <a className={styles.link_icon}><LiveHelpOutlined/> QnA</a>
                         </Link>
-                    </li>
-                    <li>
-                        <Link href="/dating">
-                            <a className={styles.link_icon}><FavoriteBorder/> Dating</a>
-                        </Link>
-                    </li>
+                    </li>      
                 </ul>
             </nav>
 
             <nav className={styles.right_nav}>
                 <ul>
-                    <li>
+                    {/* <li>
                         <Search onClick={() => setIsSearchOn(!isSearchOn)} />
-                    </li>
+                    </li> */}
                     <li>
                         <Link href="/login">
-                            <a className={styles.login}><PersonOutlineOutlined/></a>
+                            <a className={styles.login}><PersonOutlineOutlined/> Login</a>
                         </Link>
                     </li>
                 </ul>                

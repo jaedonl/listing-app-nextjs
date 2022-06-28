@@ -1,0 +1,87 @@
+.jobs_template {
+    padding: 2rem;
+    max-width: 75rem;        
+    margin: 0 auto;   
+    height: calc(100vh - 4.5rem);
+    overflow: hidden;     
+
+    .joblist_section {        
+        display: flex;        
+        height: 100%;        
+        
+        .list {
+            flex: 1;            
+            overflow-y: scroll;
+
+            ul {                       
+                .list_item {
+                    display: flex;
+                    gap: 1rem;                    
+                    padding: 1rem;                    
+                    position: relative;
+                    border: 1px solid transparent;
+                    border-bottom: 1px solid #ddd;
+                    
+                    &.current {
+                        border: 1px solid #f68a06;
+                        background-color: rgba(246,138,6,.3);
+                    }
+                    &:first-child {
+                        border-top: 1px solid #ddd;
+
+                        &.current {
+                            border: 1px solid #f68a06;
+                            background-color: rgba(246,138,6,.3);
+                        }
+                    }
+
+                    .image_wrapper {
+                        max-width: 3rem;
+                    }
+                    span {
+                        position: relative !important;
+                        img {
+                            position: relative !important;
+                            width: 100% !important;
+                            height: 100% !important;
+                        }
+                    }
+
+                    .job_info {
+                        display: flex;
+                        flex-flow: column;
+                        .job_title {
+                            font-size: 1rem;
+                            margin-bottom: .3rem;
+                            color: #f68a06;
+                        }
+                        span {
+                            margin-bottom: .2rem;
+                        }
+                        .company {
+                            color: #333;
+                        }
+                        .location_commute {
+                            color: #666;
+                        }
+                        .pay {
+                            color: #666;
+                            font-size: .8rem;
+                        }
+                    }
+
+                    svg {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        position: absolute;
+                        top: 1rem;
+                        right: 1rem;
+                    }
+                }
+            }
+        }
+        .preview {
+            flex: 1.5;
+        }
+    }
+}

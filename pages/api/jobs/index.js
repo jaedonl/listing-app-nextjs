@@ -2,8 +2,8 @@ import dbConnect from "../../../util/mongo";
 import Job from '../../../models/Job';
 
 const handler = async (req, res) => {
-    const { method } = req;
-
+    const { method, query: id } = req; 
+    
     await dbConnect()
 
     if (method === "GET") {
@@ -14,6 +14,16 @@ const handler = async (req, res) => {
             res.status(500).json(error)
         }        
     }
+
+    // if (method === "GET" && query == ) {
+    //     try {
+    //         const jobs = await Job.find()
+    //         res.status(200).json(jobs)   
+    //     } catch (error) {
+    //         res.status(500).json(error)
+    //     }        
+    // }
+
 
     if (method === "POST") {
         try {

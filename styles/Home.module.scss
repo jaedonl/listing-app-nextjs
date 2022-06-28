@@ -1,5 +1,7 @@
 .container {
-  padding: 0 2rem;
+    padding: 2rem;
+    max-width: 75rem;
+    margin: 0 auto;
 }
 
 .flex {
@@ -8,11 +10,10 @@
     column-gap: 2rem;
 
     .main_sections {
-        flex: 7.5;
+        flex: 8;
     }
     .aside_banner {
-        flex: 2.5;
-        margin-top: 2rem;
+        flex: 2;        
         
         .side_ads_banner {    
             margin-bottom: 1rem;

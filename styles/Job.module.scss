@@ -1,5 +1,7 @@
 .job_template {
     padding: 2rem;
+    max-width: 90rem;        
+    margin: 0 auto;
 
     .breadcrumb {
         ul {
@@ -27,6 +29,31 @@
     }
 
     .job_info {
+        .job_heading {
+            h1 {
+                margin: 0;
+            }
+            .title_flex {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                margin: 1rem 0;
+                
+                .image_wrapper {                    
+                    width: 5rem;
+                    
+                    span {
+                        position: relative !important;
+                        img {
+                            position: relative !important;
+                            width: 100% !important;
+                            height: 100% !important;                            
+                        }
+                    }
+                }
+                
+            }
+        }
         
     }
 }

@@ -48,8 +48,8 @@ export default function Home({jobs, jobs2, housings, housings2}) {
     )
 }
 
-export const getServerSideProps = async (context) => {                
-    const jobs_res          = await axios.get('http://localhost:3000/api/jobs')     
+export const getServerSideProps = async (context) => {         
+    const jobs_res          = await axios.get('http://localhost:3000/api/jobs')
     const housings_res      = await axios.get('http://localhost:3000/api/housings')     
     // const forsales_res      = await axios.get('/api/forsales')     
     // const communities_res   = await axios.get('/api/communities')     

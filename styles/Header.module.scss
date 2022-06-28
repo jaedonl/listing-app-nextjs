@@ -1,20 +1,25 @@
-.header {
-    padding: 0 2rem;
-    height: 4.5rem;
+.header {    
+    height: 3.5rem;
     border-bottom: 1px solid #ddd;
     position: sticky;
     top: 0px;
+    background-color: #fff;
+    z-index: 2;
     
     .site_nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: 100%;
+        padding: 0 2rem;
+        max-width: 75rem;        
+        margin: 0 auto;
 
         .home_link {              
             flex: 1;      
             font-size: 2rem;
             margin: 0;
+            color: #f68a06;
         }
 
         .page_nav {
@@ -38,16 +43,17 @@
                     cursor: pointer;
                     border-bottom: 3px solid transparent;                    
                     transition: all .2s ease;       
+                    color: #333;
+                    font-size: .8rem;
 
                     &:hover {
-                        border-bottom: 3px solid #000;
+                        border-bottom: 3px solid #f68a06;
                     }
 
-                    span {
+                    a {
                         height: 100%;
                         display: flex;
-                        align-items: center; 
-                        font-size: 1rem;                        
+                        align-items: center;
                     }
                     .link_icon {                        
                         height: 100%;
@@ -55,11 +61,12 @@
                         flex-flow: column;
                         align-items: center; 
                         justify-content: center;
-                        font-size: 1rem;
+                        font-size: .8rem;
 
                         svg {
                             width: 2rem;
                             height: 2rem;
+                            color: #f68a06;
                         }
                     }       
                 }
@@ -75,11 +82,21 @@
             svg {
                 width: 2rem;
                 height: 2rem;
+                color: #f68a06;
             }
 
             ul {
                 display: flex;
-                gap: 1rem;                
+                gap: 1rem;              
+                li {
+                    a {
+                        height: 100%;
+                        display: flex;
+                        flex-flow: column;
+                        align-items: center;
+                        font-size: .8rem;
+                    }
+                }  
             }
         }        
     }        

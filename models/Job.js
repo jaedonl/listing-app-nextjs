@@ -9,8 +9,12 @@ const JobSchema = new mongoose.Schema({
     company: {
         type: String,
         required: true,
-    },
+    },    
     desc: {
+        type: String,
+        required: true,        
+    },
+    location: {
         type: String,
         required: true,        
     },
@@ -19,6 +23,10 @@ const JobSchema = new mongoose.Schema({
         required: true,
     },
     job_type: {
+        type: String,
+        required: true,
+    },
+    commute_type: {
         type: String,
         required: true,
     },

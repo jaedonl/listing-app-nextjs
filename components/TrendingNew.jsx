@@ -86,7 +86,7 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
                                 <Link href={`/jobs/${job._id}`}>
                                     <a className={styles.post_flex}>
                                         <div className={styles.flex_left}>
-                                            <span className={styles.post_views}>[{job.views}]</span>
+                                            <span className={styles.post_views}>({job.views})</span>
                                             <span className={styles.post_title}> {job.title}</span>
                                             <span className={styles.job_company}>– {job.company} </span>    
                                         </div>   
