@@ -6,8 +6,14 @@ import SectionGrid from '../components/Partners'
 import TrendingNew from '../components/TrendingNew'
 import SearchBar from '../components/SearchBar'
 import axios from 'axios'
+import { useSession, signIn, signOut } from "next-auth/react"
+
 
 export default function Home({jobs, jobs2, housings, housings2}) {
+    const { data: session, status } = useSession()
+
+    console.log(session, status);
+
     return (
         <div className={styles.container}>
             <Head>
@@ -15,7 +21,15 @@ export default function Home({jobs, jobs2, housings, housings2}) {
                 <meta name="description" content="All listings you are looking for." />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+
+            {/* { status !== 'loading' && !session && (
+                <>
+                    Not signed in <br />
+                    <button onClick={() => signIn()}>Sign in</button>
+                </>
+            )} */}
             
+            {/* { session && ( */}
             <main>
                 <div className={styles.flex}>
                     <div className={styles.main_sections}>
@@ -42,7 +56,9 @@ export default function Home({jobs, jobs2, housings, housings2}) {
                         </div>
                     </aside>   
                 </div>
-            </main>            
+            </main>    
+            {/* )} */}
+                    
                 
         </div>
     )

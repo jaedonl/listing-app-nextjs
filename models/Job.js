@@ -51,9 +51,15 @@ const JobSchema = new mongoose.Schema({
     views: {
         type: Number,
     },
+    website: {
+        type: String,        
+    },    
     recommend: {
         type: Number,
     },
+    author: {
+        type: String,        
+    }
 }, {timestamps: true}
 )
 

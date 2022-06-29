@@ -47,6 +47,9 @@ const HousingSchema = new mongoose.Schema({
     recommend: {
         type: Number,
     },
+    author: {
+        type: String,        
+    }
 }, {timestamps: true}
 )
 

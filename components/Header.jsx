@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import Link from "next/link";
 import styles from "../styles/Header.module.scss";
-import { WorkOutline, HomeOutlined, Storefront, ForumOutlined, LiveHelpOutlined, FavoriteBorder, PersonOutlineOutlined, Search } from '@mui/icons-material';
-
+import { WorkOutline, HomeOutlined, Storefront, ForumOutlined, LiveHelpOutlined, FavoriteBorder, PersonOutlineOutlined, NotificationsOutlined, Search } from '@mui/icons-material';
 
 const Header = () => {
   return (
@@ -44,12 +43,12 @@ const Header = () => {
 
             <nav className={styles.right_nav}>
                 <ul>
-                    {/* <li>
-                        <Search onClick={() => setIsSearchOn(!isSearchOn)} />
-                    </li> */}
+                    <li>
+                        <NotificationsOutlined onClick={() => setIsSearchOn(!isSearchOn)} />
+                    </li>
                     <li>
                         <Link href="/login">
-                            <a className={styles.login}><PersonOutlineOutlined/> Login</a>
+                            <a className={styles.login}><PersonOutlineOutlined/></a>
                         </Link>
                     </li>
                 </ul>                

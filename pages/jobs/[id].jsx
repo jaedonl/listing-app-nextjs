@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import axios from 'axios'
 import styles from "../../styles/Job.module.scss";
+import JobInfo from '../../components/JobInfo'
 
 const Job = ({jobData}) => {
     const [job, setJob] = useState(jobData)    
@@ -23,19 +24,9 @@ const Job = ({jobData}) => {
                 </ul>
             </nav>
             
-            <section className={styles.job_info}>                
-                <div className={styles.job_heading}>
-                    <h1>{job.title}</h1>
-                    <div className={styles.title_flex}>
-                        <div className={styles.image_wrapper}>                            
-                            <Image src={job.img[0]} layout="fill" objectFit="cover" className={styles.image} />
-                        </div>            
-                        <div>
-                            <h2>{job.company}</h2>      
-                        </div>                        
-                    </div>                    
-                </div>                                
-            </section>            
+            <section className={styles.job_section}>
+                <JobInfo jobData={jobData} />
+            </section>                        
         </main>
     )
 }

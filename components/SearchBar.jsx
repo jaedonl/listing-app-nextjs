@@ -35,7 +35,7 @@ const SearchBar = () => {
         <div className={`${styles.search_box} ${page == 'jobs' && styles.page_jobs}`}>
             <form className={styles.search_wrapper}>
                 <div className={styles.input_wrapper}>
-                    <label for="search"><Search/></label>                
+                    <label htmlFor="search"><Search/></label>                
                     <input 
                         type="search" 
                         className={styles.search_input} 
@@ -45,7 +45,7 @@ const SearchBar = () => {
                     />
                 </div>
                 
-                <select name="location" id="location" className={styles.location_select}>
+                <select name="location" id="location" className={styles.location_select} defaultValue="NY">
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>
@@ -77,7 +77,7 @@ const SearchBar = () => {
                     <option value="NH">New Hampshire</option>
                     <option value="NJ">New Jersey</option>
                     <option value="NM">New Mexico</option>
-                    <option value="NY" selected>New York</option>
+                    <option value="NY">New York</option>
                     <option value="NC">North Carolina</option>
                     <option value="ND">North Dakota</option>
                     <option value="OH">Ohio</option>

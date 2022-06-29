@@ -82,7 +82,7 @@
                             width: 2.2rem
                         }
                         .flex_left {
-                            flex: 70%;
+                            flex: 6;
                             display: flex;
                             align-items: center;
                             
@@ -92,11 +92,11 @@
                             }
                             .post_title {
                                 overflow: hidden;
-                                max-width: 30ch;
+                                max-width: 25ch;
                                 text-overflow: ellipsis;
                                 white-space: nowrap;
                                 display: inline-block;
-                                max-width: 17rem;
+                                // max-width: 17rem;
                             }      
                         }
                         
@@ -107,7 +107,7 @@
 
 
                             &.housing {
-                                flex: 30%;
+                                flex: 3;
                             }
 
                             .house_area {

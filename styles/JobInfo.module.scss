@@ -1,0 +1,116 @@
+.job_info {
+    padding: 1rem;    
+    overflow-y: auto;
+    height: 100%;    
+
+    &.page_job {
+        padding: 0;   
+        margin-top: 1rem;     
+    }
+    .job_heading {
+        .title_div {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            h1 {
+                margin: 0;
+            }   
+            a {                
+                &:hover {
+                    color: #f68a06;
+                    text-decoration: underline;
+                }
+            }
+        }    
+
+        .title_flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;            
+            margin: 1rem 0;
+            
+            .job_header {
+                display: flex;
+                gap: 1rem;
+
+                .image_wrapper {                    
+                    width: 5rem;
+                    
+                    span {
+                        position: relative !important;
+                        img {
+                            position: relative !important;
+                            width: 100% !important;
+                            height: 100% !important;                            
+                        }
+                    }
+                }
+
+                .job_info1 {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;                    
+                    
+                    .company_title {
+                        font-size: 1rem;
+                        margin-bottom: .3rem;
+                        color: #f68a06;
+                    }
+                    .website_link {
+                        color: #666;
+                        font-size: .8rem;
+                        margin-bottom: .5rem;
+                        text-decoration: underline;
+
+                        &:hover {
+                            color: #f68a06;                            
+                        }
+                    }
+                    span {
+                        margin-bottom: .2rem;
+                        font-size: .8em;
+                    }                    
+                    .location_commute {
+                        color: #666;
+                    }
+                    .pay {
+                        color: #666;
+                        font-size: .8rem;
+                    }                
+                }
+            }
+            
+
+            .job_info2 {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                color: #666;
+                gap: .2rem;
+
+                span {
+                    font-size: .8rem;
+                    .infon_label {
+                        display: inline-block;
+                        width: 5rem;
+                    }
+                }
+            }           
+        }
+
+        .job_tags {
+            ul {
+                display: flex;
+                gap: .5rem;
+                li {
+                    color: #666;
+                    text-transform: capitalize;
+                    font-size: 1rem;
+                }
+            }
+        }
+        .job_desc {
+            margin-top: 2rem;
+        }
+    }        
+}

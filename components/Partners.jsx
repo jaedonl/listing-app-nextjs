@@ -11,7 +11,7 @@ const Partners = () => {
             <div className={styles.section_grid}>                            
                 <div className={styles.section_left}>
                     {partnersData.map((partner, idx) => (
-                        <div className={styles.grid_item}>       
+                        <div key={idx} className={styles.grid_item}>       
                             <Link href={`/partners/${partner.handle}`}>
                                 <a>
                                     <Image src={partner.imgUrl} width="100%" height="100%" layout="responsive" objectFit="contain" className={styles.image} />

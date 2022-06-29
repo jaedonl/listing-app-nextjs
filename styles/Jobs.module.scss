@@ -1,17 +1,21 @@
 .jobs_template {
-    padding: 2rem;
-    max-width: 75rem;        
-    margin: 0 auto;   
-    height: calc(100vh - 4.5rem);
+    padding: 0 2rem;    
+    max-width: 80rem;        
+    margin: 2rem auto 0;   
+    height: calc(100vh - 5.5rem);
     overflow: hidden;     
 
     .joblist_section {        
         display: flex;        
-        height: 100%;        
+        height: calc(100% - 3.5rem);     
+        margin-top: .5rem;  
+        background-color: #fff;   
+        border: 1px solid #eee;
+        border-radius: .5rem;
         
         .list {
             flex: 1;            
-            overflow-y: scroll;
+            overflow-y: auto;
 
             ul {                       
                 .list_item {
@@ -20,14 +24,18 @@
                     padding: 1rem;                    
                     position: relative;
                     border: 1px solid transparent;
-                    border-bottom: 1px solid #ddd;
+                    border-bottom: 1px solid #eee;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
                     
                     &.current {
                         border: 1px solid #f68a06;
                         background-color: rgba(246,138,6,.3);
                     }
                     &:first-child {
-                        border-top: 1px solid #ddd;
+                        border-top: 1px solid #eee;
 
                         &.current {
                             border: 1px solid #f68a06;
@@ -68,6 +76,10 @@
                             color: #666;
                             font-size: .8rem;
                         }
+                        .post_date {
+                            color: #666;
+                            font-size: .8rem;
+                        }
                     }
 
                     svg {
@@ -76,12 +88,13 @@
                         position: absolute;
                         top: 1rem;
                         right: 1rem;
+                        color: #f68a06;
                     }
                 }
             }
         }
         .preview {
-            flex: 1.5;
+            flex: 1.5;            
         }
     }
 }

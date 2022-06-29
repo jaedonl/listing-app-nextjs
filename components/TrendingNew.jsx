@@ -54,9 +54,7 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
     
     
     return (
-        <section className={styles.trending_new}>
-            {/* <h2>Trending / New</h2> */}
-
+        <section className={styles.trending_new}>            
             <menu className={styles.listing_tab}>
                 <li name="jobs" className={`${styles.tab} ${styles.current}`}>
                     <button type="button" name="jobs" onClick={(e) => {setTab(e.currentTarget.getAttribute('name'))}}>Job</button>
