@@ -5,26 +5,27 @@
     background-color: #fff;
     border: 1px solid #eee;
     border-radius: .5rem;
-}
 
-.flex {
-    display: flex;
-    justify-content: space-between;    
-    column-gap: 2rem;
-
-    .main_sections {
-        flex: 8;
-    }
-    .aside_banner {
-        flex: 2;        
-        
-        .side_ads_banner {    
-            margin-bottom: 1rem;
+    main {
+        .flex {
+            display: flex;
+            justify-content: space-between;    
+            column-gap: 2rem;
+    
+            .main_sections {
+                flex: 8;
+            }
+            .aside_banner {
+                flex: 2;        
+                
+                .side_ads_banner {    
+                    margin-bottom: 1rem;
+                }
+            }
         }
     }
+    
 }
-
-
 
 
 @media (max-width: 600px) {

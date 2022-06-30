@@ -5,6 +5,27 @@
     height: calc(100vh - 5.5rem);
     overflow: hidden;     
 
+    .search_and_post {
+        .post_link_wrapper {
+            text-align: right;
+            margin: 1rem 0;
+
+            .link {
+                background: #fff;
+                border: 1px solid #f68a06;
+                border-radius: .2rem;
+                padding: .5rem 1rem;
+                color: #f68a06;
+                margin-left: .5rem;
+                transition: all .1s ease-in;
+                &:hover {
+                    background-color: #f68a06;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
     .joblist_section {        
         display: flex;        
         height: calc(100% - 3.5rem);     

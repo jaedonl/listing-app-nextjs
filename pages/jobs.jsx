@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react'
+import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
 import Image from 'next/image';
 import Link from 'next/link';
@@ -44,10 +44,16 @@ const jobs = ({jobs}) => {
                 <meta name="description" content="list of jobs" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-                        
-            <SearchBar />              
 
-            <div className={styles.joblist_section}>
+            <section className={styles.search_and_post}>
+                <SearchBar />              
+                <div className={styles.post_link_wrapper}>
+                    <Link href="/jobs/post"><a className={styles.link}>Manage posts</a></Link>
+                    <Link href="/jobs/post"><a className={styles.link}>Post new job</a></Link>
+                </div>                
+            </section>            
+
+            <section className={styles.joblist_section}>
                 <section className={styles.list}>
                     <ul>
                         {list.map((job, idx) => (
@@ -124,7 +130,7 @@ const jobs = ({jobs}) => {
                 <section className={styles.preview}>          
                     <JobInfo jobData={current} />                  
                 </section>
-            </div>
+            </section>
         </main>
     )
 }

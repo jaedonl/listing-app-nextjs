@@ -44,10 +44,10 @@ const Header = () => {
             <nav className={styles.right_nav}>
                 <ul>
                     <li>
-                        <NotificationsOutlined onClick={() => setIsSearchOn(!isSearchOn)} />
+                        <NotificationsOutlined />
                     </li>
                     <li>
-                        <Link href="/login">
+                        <Link href="/account">
                             <a className={styles.login}><PersonOutlineOutlined/></a>
                         </Link>
                     </li>

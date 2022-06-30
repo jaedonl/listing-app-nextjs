@@ -4,15 +4,23 @@ import { SessionProvider } from "next-auth/react"
 import { Provider } from 'react-redux'
 import { store, persistor } from '../redux/store'
 import { PersistGate } from 'redux-persist/integration/react';
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps: { session, ...pageProps} }) {
+    const router = useRouter()
+
+    console.log(router)
     return (
         <SessionProvider session={session}>
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
-                    <Layout>
-                        <Component {...pageProps} />
-                    </Layout>
+                    { router.pathname === '/login' ? (
+                            <Component {...pageProps} />
+                        ) : (
+                            <Layout>
+                                <Component {...pageProps} />
+                            </Layout>                     
+                        )}                    
                 </PersistGate>
             </Provider>
         </SessionProvider>
