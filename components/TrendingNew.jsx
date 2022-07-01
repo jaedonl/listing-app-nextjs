@@ -38,7 +38,7 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
         setTrendingJobs(jobs.sort((a, b) => (b.views > a.views) ? 1 : -1))        
         setNewestJobs(jobs2.sort((a, b) => (b.createdAt > a.createdAt) ? 1 : -1))
         
-        setTrendingHousings(housings?.sort((a, b) => (a.views > b.views) ? 1 : -1))        
+        setTrendingHousings(housings?.sort((a, b) => (b.views > a.views) ? 1 : -1))        
         setNewestHousings(housings2?.sort((a, b) => (b.createdAt > a.createdAt) ? 1 : -1))                   
     }, [jobs, jobs2, housings, housings2])    
 
@@ -84,18 +84,19 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
                                 <Link href={`/jobs/${job._id}`}>
                                     <a className={styles.post_flex}>
                                         <div className={styles.flex_left}>
-                                            <span className={styles.post_views}>({job.views})</span>
+                                            <span className={styles.post_views}>{job.views}</span>
                                             <span className={styles.post_title}> {job.title}</span>
                                             <span className={styles.job_company}>– {job.company} </span>    
                                         </div>   
                                         <div className={styles.flex_right}>
-                                            <Moment date={date} format="YYYY/MM/DD" className={styles.post_date} />    
+                                            <Moment date={date} format="MM/DD/YY" className={styles.post_date} />    
                                         </div>                                             
                                     </a>
                                 </Link>
                             </li>
                             ) 
                         })} 
+                        
                         { tab === 'housings' && trendingList && trendingList.map((house, idx) => {
                             var date = new Date(house.createdAt).toDateString()
                             var area               
@@ -104,14 +105,14 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
                             return (
                             <li key={idx}>
                                 <Link href={`/housings/${house._id}`}>
-                                    <a className={`${styles.post_flex} ${styles.housing}`}>
+                                    <a className={styles.post_flex}>
                                         <div className={styles.flex_left}>
-                                            <span className={styles.post_views}>({house.views})</span>
+                                            <span className={styles.post_views}>{house.views}</span>
                                             <span className={styles.post_title}> {house.title}</span>
+                                            <span className={styles.house_area}>[{area}]</span>
                                         </div>  
-                                        <div className={`${styles.flex_right} ${styles.housing}`}>
-                                            <span className={styles.house_area}>{area}</span>
-                                            <Moment date={date} format="YYYY/MM/DD" className={styles.post_date} />
+                                        <div className={styles.flex_right}>
+                                            <Moment date={date} format="MM/DD/YY" className={styles.post_date} />
                                         </div>                                        
                                     </a>
                                 </Link>
@@ -121,7 +122,7 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
                     </ul>   
                 </div> 
 
-                <div  className={styles.listing}>
+                <div className={styles.listing}>
                     <h3>New listing</h3>
                     <ul>
                         { tab === 'jobs' && newestList && newestList.map((job, idx) => {                                      
@@ -129,14 +130,14 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
                             return (
                             <li key={idx}>
                                 <Link href={`/jobs/${job._id}`}>
-                                    <a className={`${styles.post_flex} ${styles.housing}`}>
+                                    <a className={styles.post_flex}>
                                         <div className={styles.flex_left}>
-                                            <span className={styles.post_views}>({job.views})</span>
+                                            <span className={styles.post_views}>{job.views}</span>
                                             <span className={styles.post_title}> {job.title}</span>
                                             <span className={styles.job_company}>– {job.company} </span>
                                         </div>                           
                                         <div className={styles.flex_right}>
-                                            <Moment date={date} format="YYYY/MM/DD" className={styles.post_date} />
+                                            <Moment date={date} format="MM/DD/YY" className={styles.post_date} />
                                         </div>                                                     
                                     </a>
                                 </Link>
@@ -153,12 +154,12 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
                                 <Link href={`/housings/${house._id}`}>
                                     <a className={styles.post_flex}>
                                         <div className={styles.flex_left}>
-                                            <span className={styles.post_views}>({house.views})</span>
-                                            <span className={styles.post_title}> {house.title}</span>                                            
+                                            <span className={styles.post_views}>{house.views}</span>
+                                            <span className={styles.post_title}> {house.title}</span>
+                                            <span className={styles.house_area}>[{area}]</span>
                                         </div>           
-                                        <div className={`${styles.flex_right} ${styles.housing}`}>
-                                            <span className={styles.house_area}>{area}</span>
-                                            <Moment date={date} format="YYYY/MM/DD" className={styles.post_date} />
+                                        <div className={styles.flex_right}>
+                                            <Moment date={date} format="MM/DD/YY" className={styles.post_date} />
                                         </div>                                                                     
                                     </a>
                                 </Link>

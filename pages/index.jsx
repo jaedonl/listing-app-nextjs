@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.scss'
-import SectionGrid from '../components/Partners'
+import Partners from '../components/Partners'
 import TrendingNew from '../components/TrendingNew'
 import SearchBar from '../components/SearchBar'
 import axios from 'axios'
@@ -13,12 +13,12 @@ import { useRouter } from 'next/router'
 export default function Home({jobs, jobs2, housings, housings2}) {
     const { data: session, status } = useSession()
     const router = useRouter()
-    console.log(session, status);
+    // console.log(session, status);
 
-    const handleSignOut = async () => {
-        const data = await signOut({ redirect: false, callbackUrl: '/account'})
-        router.push(data.url)
-    }
+    // const handleSignOut = async () => {
+    //     const data = await signOut({ redirect: false, callbackUrl: '/account'})
+    //     router.push(data.url)
+    // }
 
     return (
         <div className={styles.container}>
@@ -28,7 +28,7 @@ export default function Home({jobs, jobs2, housings, housings2}) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            { status !== 'loading' && !session && (
+            {/* { status !== 'loading' && !session && (
                 <>
                     Not signed in <br />
                     <button onClick={signIn}>Sign in</button>
@@ -39,39 +39,33 @@ export default function Home({jobs, jobs2, housings, housings2}) {
                     You are signed in as {session.user.email} <br />
                     <button onClick={handleSignOut}>Sign out</button>
                 </>
-            )}
+            )} */}
 
             {/* { session && ( */}
-            <main>
-                <div className={styles.flex}>
-                    <div className={styles.main_sections}>
-                        <SectionGrid />        
-                        <SearchBar />    
-                        <TrendingNew jobs={jobs} jobs2={jobs2} housings={housings} housings2={housings2} />  
-                    </div>                    
+            <main className={styles.main_sections}>
+                <section>
+                    <SearchBar />    
+                    <TrendingNew jobs={jobs} jobs2={jobs2} housings={housings} housings2={housings2} />  
+                </section>                
 
+                <section>
+                <div className={styles.partners_and_ads}>
+                    <Partners />        
                     <aside className={styles.aside_banner}>
                         <div className={styles.side_ads_banner}>
                             <Link href="#">
                                 <a>
-                                    <Image src="/assets/images/banner/sidebanner_1.jpeg" width="100%" height="100%" layout="responsive" objectFit="cover" className={styles.image} />
-                                    
+                                    <div className={styles.image_wrapper}>
+                                        <Image src="/assets/images/banner/sidebanner_1.jpeg" layout="fill" objectFit="contain" className={styles.image} />
+                                    </div>                                        
                                 </a>
                             </Link>     
                         </div>
-                        <div className={styles.side_ads_banner}>
-                            <Link href="#">
-                                <a>
-                                    <Image src="/assets/images/banner/sidebanner_2.jpeg" width="100%" height="100%" layout="responsive" objectFit="cover" className={styles.image} />
-                                </a>
-                            </Link>     
-                        </div>
-                    </aside>   
-                </div>
-            </main>    
-            {/* )} */}
-                    
-                
+                    </aside>
+                </div>   
+                </section>
+            </main>   
+            {/* )} */}                    
         </div>
     )
 }

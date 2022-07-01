@@ -8,13 +8,12 @@ import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps: { session, ...pageProps} }) {
     const router = useRouter()
-
-    console.log(router)
+    
     return (
         <SessionProvider session={session}>
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
-                    { router.pathname === '/login' ? (
+                    { router.pathname === '/auth/login' ? (
                             <Component {...pageProps} />
                         ) : (
                             <Layout>

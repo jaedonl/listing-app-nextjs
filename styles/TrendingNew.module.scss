@@ -1,5 +1,6 @@
 .trending_new {
     margin-top: 3rem;
+    width: 100%;
 
     .listing_tab {
         padding: 0;   
@@ -41,6 +42,7 @@
         
         .listing {
             flex: 1;
+            width: 50%;
 
             &:first-child {                
                 padding-right: 1rem;
@@ -76,43 +78,51 @@
 
                     .post_flex {
                         display: flex;
+                        flex-wrap: wrap;                        
                         justify-content: space-between;
 
-                        .post_views {
-                            width: 2.2rem
-                        }
+                        
                         .flex_left {
-                            flex: 6;
+                            // flex: 6;
                             display: flex;
                             align-items: center;
-                            
-                            .job_company {
-                                color: #444;
+                            gap: .5rem;
 
+                            .post_views {
+                                width: 2.2rem;
+                                font-size: .8rem;
+                                padding: .1rem;
+                                border: 1px solid #f68a06;
+                                border-radius: .4rem;
+                                text-align: center;
                             }
                             .post_title {
                                 overflow: hidden;
-                                max-width: 25ch;
                                 text-overflow: ellipsis;
                                 white-space: nowrap;
                                 display: inline-block;
                                 // max-width: 17rem;
-                            }      
+                                // max-width: 25ch;
+                            }    
+                            
+                            .job_company {
+                                color: #444;
+                                font-size: .9rem;
+                            }
+                              
+                            .house_area {
+                                flex: 1;
+                                margin-left: 1rem;
+                                font-weight: 600;
+                            }
                         }
                         
                         .flex_right {
                             display: flex;
                             align-items: center;
                             justify-content: space-between;
-
-
-                            &.housing {
-                                flex: 3;
-                            }
-
-                            .house_area {
-                                flex: 1;
-                            }
+                            gap: .5rem;                    
+                                                        
                             .post_date {
                                 font-size: .8rem;
                                 color: #888;
