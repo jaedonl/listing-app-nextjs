@@ -9,8 +9,11 @@ const handler = async (req, res) => {
     if (method === "POST") {                    
         try {
             const user = await User.findOne({ email: req.body.email })
-            if (!user) res.status(401).send('Wrong email.')
-            if (user.password !== req.body.password) res.status(401).send('Wrong password.')
+            if (req.body.email === '') res.status(401).send("Please input email.")
+            if (req.body.password === '') res.status(401).send("Please input password.")
+
+            if (!user) res.status(401).send('Wrong email.', {email: req.body.email})
+            if (user.password !== req.body.password) res.status(401).send('Wrong password.', {password: req.body.password})
 
             res.status(200).json(user)
 

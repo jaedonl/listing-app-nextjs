@@ -3,10 +3,12 @@ import Link from "next/link";
 import styles from "../styles/Header.module.scss";
 import { WorkOutline, HomeOutlined, Storefront, ForumOutlined, LiveHelpOutlined, FavoriteBorder, PersonOutlineOutlined, NotificationsOutlined, Search } from '@mui/icons-material';
 import { useSession, signIn, signOut } from "next-auth/react"
+import { useSelector } from 'react-redux';
 
 const Header = () => {
     const { data: session, status } = useSession()
-    
+    const authUser = useSelector(state => state.auth)
+
     return (
         <header className={styles.header}>
             <nav className={styles.site_nav}>
@@ -54,7 +56,8 @@ const Header = () => {
                         <li>
                             <Link href="/account">
                                 <a className={styles.login}><PersonOutlineOutlined/> 
-                                    { !session ? 'Login' : <span>{session.user.name.split(' ')[0]}</span>}
+                                    { (!session || !authUser.user) ? 'Login' : 
+                                    <span>{session ? session.user.name.split(' ')[0] : authUser.user.firstname}</span>}
                                 </a>
                             </Link>
                         </li>

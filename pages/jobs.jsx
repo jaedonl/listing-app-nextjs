@@ -27,7 +27,7 @@ const jobs = ({jobs}) => {
         });
         e.currentTarget.classList.add(`${styles.current}`) 
 
-        router.push(`/jobs?current=${jobs[idx]._id}`) 
+        router.push(`/jobs?current=${jobs[idx]._id}`)         
     }
 
     useEffect(() => {        

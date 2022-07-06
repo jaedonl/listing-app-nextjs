@@ -13,12 +13,6 @@ import { useRouter } from 'next/router'
 export default function Home({jobs, jobs2, housings, housings2}) {
     const { data: session, status } = useSession()
     const router = useRouter()
-    // console.log(session, status);
-
-    // const handleSignOut = async () => {
-    //     const data = await signOut({ redirect: false, callbackUrl: '/account'})
-    //     router.push(data.url)
-    // }
 
     return (
         <div className={styles.container}>
@@ -28,20 +22,6 @@ export default function Home({jobs, jobs2, housings, housings2}) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            {/* { status !== 'loading' && !session && (
-                <>
-                    Not signed in <br />
-                    <button onClick={signIn}>Sign in</button>
-                </>
-            )}
-            {session && ( 
-                <>
-                    You are signed in as {session.user.email} <br />
-                    <button onClick={handleSignOut}>Sign out</button>
-                </>
-            )} */}
-
-            {/* { session && ( */}
             <main className={styles.main_sections}>
                 <section>
                     <SearchBar />    

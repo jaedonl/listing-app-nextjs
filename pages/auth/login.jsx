@@ -5,32 +5,31 @@ import styles from "../../styles/Login.module.scss";
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from 'next/router';
 import {GitHub, Google} from '@mui/icons-material';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux'
+import { loginStart, loginSuccess, loginFailure, loggingOut } from '../../redux/auth/authSlice';
 
 const providers = [
-    {
-        name: 'github',
-        Icon: GitHub,
-        color: '#967bb6',
-    },
-    {
-        name: 'google',
-        Icon: Google,
-        color: '#eb4034',
-    },
+    { name: 'github', Icon: GitHub, color: '#967bb6'},
+    { name: 'google', Icon: Google, color: '#eb4034'},
 ]    
-
 
 const login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [error, setError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState(null)
     const { data: session } = useSession()
     const router = useRouter()
+    const dispatch = useDispatch()
+    const authUser = useSelector(state => state.auth)    
 
     useEffect(() => {
-        if (session !== 'loading' && session) {
+        if ((session !== 'loading' && session) || authUser.user) {
             router.push('/account')
-        }
-    }, [session])
+        }        
+
+    }, [session, authUser])
 
     const handleInputFocus = (e) => {
         const elem = document.activeElement
@@ -46,10 +45,20 @@ const login = () => {
     const handleSubmit = async (e) => {    
         e.preventDefault()    
 
-        if (!email) return false
-		signIn('email', { email, redirect: false })
-    }
-    
+        dispatch(loginStart())
+		try {            
+            const res = await axios.post('http://localhost:3000/api/auth/login', {email, password})    
+            console.log(res.data);        
+            setError(false)
+
+            dispatch(loginSuccess(res.data))
+
+        } catch (error) {
+            console.log(error);
+            setError(true)
+            dispatch(loginFailure()); 
+        }
+    }    
 
     useEffect(() => {
         const emailLabel = document.querySelector('label[for="email"]')
@@ -87,6 +96,7 @@ const login = () => {
                             onClick={handleInputFocus}
                             onChange={(e) => setEmail(e.target.value)}
                         />
+                        {error && (errorMessage === 'Wrong email.' || errorMessage === 'Please input email.') && <span className={styles.error_message}>{errorMessage}</span>}           
                     </div>
                     <div className={styles.input_wrapper}>
                         <label for="password">Password</label>
@@ -101,9 +111,10 @@ const login = () => {
                             onClick={handleInputFocus}
                             onChange={(e) => setPassword(e.target.value)}
                         />
+                        {error && (errorMessage === 'Wrong password.' || errorMessage === 'Please input password.') && <span className={styles.error_message}>{errorMessage}</span>}                        
                     </div>
 
-                    <a href="#" className={styles.forgot_password}>Forgot password?</a>
+                    <Link href="/auth/register"><a className={styles.forgot_password}>Forgot password?</a></Link>
 
                     <div className={styles.signin_btn_wrapper}>
                         <button type="button" aria-label="sign in button" className={styles.signin_btn} onClick={handleSubmit}>Sign in</button>
@@ -116,27 +127,13 @@ const login = () => {
                         <div className={styles.social_btn_container}>
                             { providers.map(({name, Icon, color}) => (
                                 <button type="button" aria-label="social login button" 
-                                    className={`${styles.social_btn}`} 
+                                    className={`${styles.social_btn} ${styles[name]}`} 
                                     onClick={handleOAuthSignIn(name)}>                                        
-                                    <Icon/> <span>{name}</span>
+                                    <Icon/> <span>Sign in with {name}</span>
                                 </button>
-                                // <div className={styles.social_btn_wrapper} key={provider}>
-                                //     <button type="button" aria-label="social login button" className={styles.social_btn} 
-                                //     onClick={handleOAuthSignIn(provider)}>{provider} sign in</button>
-                                // </div> 
                             ))}
                         </div>
-                        
-                        {/* <div className={styles.social_btn_wrapper}>
-                            <button type="button" aria-label="social login button" className={styles.social_btn} 
-                            onClick={()=>signin('github')}>Github sign in</button>
-                        </div>          
-                        <div className={styles.social_btn_wrapper}>
-                            <button type="button" aria-label="social login button" className={styles.social_btn} 
-                            onClick={()=>signin('google')}>Google sign in</button>
-                        </div>    */}
-                    </div>                    
-                              
+                    </div>                                                  
                 </form>       
 
                 <div className={styles.register_link}>

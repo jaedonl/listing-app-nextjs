@@ -86,7 +86,7 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
                                         <div className={styles.flex_left}>
                                             <span className={styles.post_views}>{job.views}</span>
                                             <span className={styles.post_title}> {job.title}</span>
-                                            <span className={styles.job_company}>– {job.company} </span>    
+                                            <span className={styles.job_company}> {job.company} </span>    
                                         </div>   
                                         <div className={styles.flex_right}>
                                             <Moment date={date} format="MM/DD/YY" className={styles.post_date} />    
@@ -105,13 +105,13 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
                             return (
                             <li key={idx}>
                                 <Link href={`/housings/${house._id}`}>
-                                    <a className={styles.post_flex}>
+                                    <a className={`${styles.post_flex} ${styles.housing}`}>
                                         <div className={styles.flex_left}>
                                             <span className={styles.post_views}>{house.views}</span>
-                                            <span className={styles.post_title}> {house.title}</span>
-                                            <span className={styles.house_area}>[{area}]</span>
+                                            <span className={styles.post_title}> {house.title}</span>                                            
                                         </div>  
                                         <div className={styles.flex_right}>
+                                            <span className={styles.house_area}>[{area}]</span>
                                             <Moment date={date} format="MM/DD/YY" className={styles.post_date} />
                                         </div>                                        
                                     </a>
@@ -134,7 +134,7 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
                                         <div className={styles.flex_left}>
                                             <span className={styles.post_views}>{job.views}</span>
                                             <span className={styles.post_title}> {job.title}</span>
-                                            <span className={styles.job_company}>– {job.company} </span>
+                                            <span className={styles.job_company}> {job.company} </span>
                                         </div>                           
                                         <div className={styles.flex_right}>
                                             <Moment date={date} format="MM/DD/YY" className={styles.post_date} />
@@ -152,13 +152,13 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
                             return (
                             <li key={idx}>
                                 <Link href={`/housings/${house._id}`}>
-                                    <a className={styles.post_flex}>
+                                    <a className={`${styles.post_flex} ${styles.housing}`}>
                                         <div className={styles.flex_left}>
                                             <span className={styles.post_views}>{house.views}</span>
                                             <span className={styles.post_title}> {house.title}</span>
-                                            <span className={styles.house_area}>[{area}]</span>
                                         </div>           
                                         <div className={styles.flex_right}>
+                                            <span className={styles.house_area}>[{area}]</span>
                                             <Moment date={date} format="MM/DD/YY" className={styles.post_date} />
                                         </div>                                                                     
                                     </a>

@@ -1,14 +1,19 @@
 .jobs_template {
-    padding: 0 2rem;    
+    padding: .5rem 2rem 0;    
     max-width: 75rem;        
-    margin: 2rem auto 0;   
-    height: calc(100vh - 5.5rem);
+    margin: 0 auto;   
+    height: calc(100vh - 4.5rem);
     overflow: hidden;     
 
     .search_and_post {
-        .post_link_wrapper {
-            text-align: right;
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+
+        .post_link_wrapper {            
             margin: 1rem 0;
+            display: inline-block;
+            text-align: right;            
 
             .link {
                 background: #fff;
@@ -28,11 +33,11 @@
 
     .joblist_section {        
         display: flex;        
-        height: calc(100% - 3.5rem);     
+        height: calc(100% - 4rem);     
         margin-top: .5rem;  
         background-color: #fff;   
-        border: 1px solid #eee;
-        border-radius: .5rem;
+        border: 1px solid #ddd;
+        border-radius: .2rem;
         
         .list {
             flex: 1;            
@@ -42,10 +47,11 @@
                 .list_item {
                     display: flex;
                     gap: 1rem;                    
-                    padding: 1rem;                    
+                    padding: .5rem;                    
                     position: relative;
                     border: 1px solid transparent;
-                    border-bottom: 1px solid #eee;
+                    border-bottom: 1px solid #ddd;
+                    border-right: 1px solid #ddd;
 
                     &:hover {
                         cursor: pointer;
@@ -56,7 +62,15 @@
                         background-color: rgba(246,138,6,.3);
                     }
                     &:first-child {
-                        border-top: 1px solid #eee;
+                        border-top: 1px solid transparent;
+
+                        &.current {
+                            border: 1px solid #f68a06;
+                            background-color: rgba(246,138,6,.3);
+                        }
+                    }
+                    &:last-child {
+                        border-bottom: 1px solid transparent;
 
                         &.current {
                             border: 1px solid #f68a06;
@@ -107,8 +121,8 @@
                         width: 1.5rem;
                         height: 1.5rem;
                         position: absolute;
-                        top: 1rem;
-                        right: 1rem;
+                        top: .5rem;
+                        right: .5rem;
                         color: #f68a06;
                     }
                 }

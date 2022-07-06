@@ -24,7 +24,7 @@
         .login_form {            
             padding: 2rem;        
             background-color: #fff;
-            border: 1px solid #eee;
+            border: 1px solid #ddd;
             border-radius: .5rem;
             box-shadow: 0px 5px 10px -6px #000000;
 
@@ -32,6 +32,10 @@
                 color: #333;
                 margin: 0;
                 font-size: 1rem;
+            }
+            .error_message {
+                color: tomato;
+                font-size: .8rem;
             }
             .input_wrapper {
                 position: relative;
@@ -89,14 +93,14 @@
                     background: #f68a06;
                     color: #fff;
                     font-size: 1rem;
-                    border: none;
+                    border: 1px solid #ddd;
                     border-radius: 1.5rem;
                     padding: 1rem 0;
                     cursor: pointer;
                     transition: all .1s ease-in;
 
                     &:hover {
-                        background: #cc7a00;
+                        background: #c56e05;
                     }
                 }
             }
@@ -125,42 +129,39 @@
                         }
                     }
                 }
+                
                 .social_btn_container {
-                    display: flex;
-                    justify-content: center;
-                    .social_btn {           
-                        width: 4rem;                 
-                        height: 4rem;
+                    .social_btn {      
+                        width: 100%;     
                         display: flex;
-                        flex-flow: column;
                         align-items: center;
-                        justify-content: center;                            
-                        background: #fff;
-                        color: #000;
+                        justify-content: center;
+                        gap: .5rem;
+                        color: #fff;
                         padding: .5rem;
                         font-size: 1rem;
-                        border: 1px solid #000;
-                        border-radius: .2rem;                            
+                        border: 1px solid #ddd;
+                        border-radius: 1.5rem;
                         cursor: pointer;
                         transition: all .1s ease-in;
                         margin: 0;
+                        text-transform: capitalize;    
+                        margin-bottom: .5rem;
                         svg {
                             width: 2rem;
                             height: 2rem;
                         }
-                        span {
-                            text-transform: capitalize;
-                            font-size: .8rem;
-                        }
 
                         &.github {
-                            svg {
-                                color: #967bb6;
+                            background-color: #967bb6;
+                            &:hover {
+                                background: #77579d;
                             }
                         }
                         &.google {
-                            svg {
-                                color: #eb4034;
+                            background-color: #eb4034;
+                            &:hover {
+                                background: #d12115;
                             }
                         }
                     }
