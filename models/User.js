@@ -27,6 +27,23 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    posts: {
+        jobs: {
+            type: Array,
+        },
+        housings: {
+            type: Array,
+        },
+        forsales: {
+            type: Array,
+        },
+        communities: {
+            type: Array,
+        },
+        qnas: {
+            type: Array,
+        }
+    }
   },
   { timestamps: true }
 );

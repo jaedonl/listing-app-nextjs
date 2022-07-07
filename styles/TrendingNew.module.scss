@@ -1,10 +1,6 @@
 .trending_new {
     margin-top: 3rem;
-    width: 100%;
-    background-color: #fff;
-    border: 1px solid #aaa;
-    border-radius: .5rem;  
-    padding: 0 1rem 1rem 1rem;
+    width: 100%;                
 
     .listing_tab {
         padding: 0;   
@@ -13,7 +9,7 @@
         gap: 2rem;
         height: 100%;
         position: relative;
-        border-bottom: 1px solid #aaa;
+        border-bottom: 1px solid #ddd;
 
         .tab {            
             height: 100%;
@@ -52,7 +48,7 @@
                 padding-right: 1rem;
             }
             &:last-child {
-                border-left: 1px solid #aaa;
+                border-left: 1px solid #ddd;
                 padding-left: 1rem;
             }
 
@@ -111,7 +107,7 @@
                                 text-align: center;
                             }
                             .post_title {
-                                font-size: 1.2rem;
+                                font-size: 1rem;
                                 overflow: hidden;
                                 text-overflow: ellipsis;
                                 white-space: nowrap;
@@ -132,9 +128,9 @@
 
                             .house_area {
                                 flex: 1;
-                                margin-left: 1rem;
+                                margin-left: .5rem;
                                 font-weight: 600;
-                                font-size: 1rem;
+                                font-size: 1rem;                                
                             }
                                                         
                             .post_date {

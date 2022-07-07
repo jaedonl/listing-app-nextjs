@@ -2,16 +2,22 @@ import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
 import Link from 'next/link';
 import styles from "../../styles/Login.module.scss";
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn } from "next-auth/react"
 import { useRouter } from 'next/router';
 import {GitHub, Google} from '@mui/icons-material';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux'
-import { loginStart, loginSuccess, loginFailure, loggingOut } from '../../redux/auth/authSlice';
+import { loginStart, loginSuccess, loginFailure } from '../../redux/auth/authSlice';
 
 const providers = [
-    { name: 'github', Icon: GitHub, color: '#967bb6'},
-    { name: 'google', Icon: Google, color: '#eb4034'},
+    { 
+        name: 'github', 
+        Icon: GitHub,
+    },
+    { 
+        name: 'google', 
+        Icon: Google
+    },
 ]    
 
 const login = () => {
@@ -28,7 +34,6 @@ const login = () => {
         if ((session !== 'loading' && session) || authUser.user) {
             router.push('/account')
         }        
-
     }, [session, authUser])
 
     const handleInputFocus = (e) => {
@@ -84,7 +89,7 @@ const login = () => {
                     <p>Sign in and check out our listings </p>
 
                     <div className={styles.input_wrapper}>
-                        <label for="email">Email</label>
+                        <label htmlFor="email">Email</label>
                         <input
                             type="email"
                             id="email"
@@ -99,7 +104,7 @@ const login = () => {
                         {error && (errorMessage === 'Wrong email.' || errorMessage === 'Please input email.') && <span className={styles.error_message}>{errorMessage}</span>}           
                     </div>
                     <div className={styles.input_wrapper}>
-                        <label for="password">Password</label>
+                        <label htmlFor="password">Password</label>
                         <input
                             type="password"
                             id="password"
@@ -125,8 +130,9 @@ const login = () => {
                             <span>or</span>
                         </div>
                         <div className={styles.social_btn_container}>
-                            { providers.map(({name, Icon, color}) => (
+                            { providers.map(({name, Icon}) => (
                                 <button type="button" aria-label="social login button" 
+                                    key={name}
                                     className={`${styles.social_btn} ${styles[name]}`} 
                                     onClick={handleOAuthSignIn(name)}>                                        
                                     <Icon/> <span>Sign in with {name}</span>

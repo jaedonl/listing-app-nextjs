@@ -6,7 +6,7 @@ import Partners from '../components/Partners'
 import TrendingNew from '../components/TrendingNew'
 import SearchBar from '../components/SearchBar'
 import axios from 'axios'
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession } from "next-auth/react"
 import { useRouter } from 'next/router'
 
 

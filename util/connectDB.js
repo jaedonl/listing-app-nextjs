@@ -2,6 +2,7 @@
 import { MongoClient } from "mongodb"
 
 const uri = process.env.MONGO_URL
+
 const options = {
   useUnifiedTopology: true,
   useNewUrlParser: true,

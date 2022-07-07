@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react'
 import Link from "next/link";
 import styles from "../styles/Header.module.scss";
 import { WorkOutline, HomeOutlined, Storefront, ForumOutlined, LiveHelpOutlined, FavoriteBorder, PersonOutlineOutlined, NotificationsOutlined, Search } from '@mui/icons-material';
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession } from "next-auth/react"
 import { useSelector } from 'react-redux';
 
 const Header = () => {
     const { data: session, status } = useSession()
-    const authUser = useSelector(state => state.auth)
+    const authUser = useSelector(state => state.auth)    
 
     return (
         <header className={styles.header}>
@@ -54,16 +54,16 @@ const Header = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/account">
+                            <Link href={`/account?user=${session?.user.name}`}>
                                 <a className={styles.login}><PersonOutlineOutlined/> 
-                                    { (!session || !authUser.user) ? 'Login' : 
-                                    <span>{session ? session.user.name.split(' ')[0] : authUser.user.firstname}</span>}
+                                    { session ? <span>{session.user.name.split(' ')[0]}</span> 
+                                    : authUser.user ? <span>{authUser.user.firstname}</span> 
+                                    : 'Login' }                 
                                 </a>
                             </Link>
                         </li>
                     </ul>                
                 </nav>
-                            
             </nav>
         </header>
     )

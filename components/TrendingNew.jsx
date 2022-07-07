@@ -111,7 +111,7 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
                                             <span className={styles.post_title}> {house.title}</span>                                            
                                         </div>  
                                         <div className={styles.flex_right}>
-                                            <span className={styles.house_area}>[{area}]</span>
+                                            <span className={styles.house_area}>{area}</span>
                                             <Moment date={date} format="MM/DD/YY" className={styles.post_date} />
                                         </div>                                        
                                     </a>
@@ -158,7 +158,7 @@ const TrendingNew = ({jobs, jobs2, housings, housings2}) => {
                                             <span className={styles.post_title}> {house.title}</span>
                                         </div>           
                                         <div className={styles.flex_right}>
-                                            <span className={styles.house_area}>[{area}]</span>
+                                            <span className={styles.house_area}>{area}</span>
                                             <Moment date={date} format="MM/DD/YY" className={styles.post_date} />
                                         </div>                                                                     
                                     </a>

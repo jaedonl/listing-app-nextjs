@@ -2,30 +2,32 @@ import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
 import styles from "../styles/Account.module.scss";
 import { useRouter } from 'next/router';
-import { useSession, signIn, signOut } from "next-auth/react"
-import { useSelector } from 'react-redux';
+import { useSession, signOut } from "next-auth/react"
+import { useSelector, useDispatch } from 'react-redux';
+import { loggingOut} from '../redux/auth/authSlice';
 
 const account = () => {
-    const { data: session, status } = useSession()
+    const { data: session, status } = useSession()        
     const router = useRouter()
-    const authUser = useSelector(state => state.auth)
-
-    console.log(session, status);
+    const authUser = useSelector(state => state.auth)    
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        // if ((status !== 'loading' && !session) || !authUser.user) {
-        //     router.push('/auth/login')
-        // }
-
-        // if (session !== 'loading' && session) {
-        //     router.push('/account')
-        // }
-        console.log(session, authUser);
+        if (!session && !authUser.user) {
+            router.push('/auth/login')
+        }      
+        
+        if (session) console.log(session)        
     }, [session, authUser])
 
     const handleSignOut = async () => {
-        const data = await signOut({ redirect: false, callbackUrl: '/account'})
-        router.push(data.url)
+        if (session) {
+            const data = await signOut({ redirect: false, callbackUrl: `/auth/login`})
+            router.push(data.url)
+
+        } else if (authUser.user) {
+            dispatch(loggingOut())
+        }
     }
 
     return (
@@ -44,12 +46,34 @@ const account = () => {
             { (session || authUser.user) && ( 
                 <>
                     You are signed in as { session ? session.user.email : authUser.user.email } <br />
+                    
                     <button onClick={handleSignOut}>Sign out</button>
                 </>
             )}
             
+            <section>
+                <ul>
+                    { session && session.user.posts?.jobs.map((job, idx) => (
+                        <li>{job}</li>
+                    )) }
+                </ul>                
+            </section>
+            
         </main>
     )
+}
+
+
+export const getServerSideProps = async ({params, query}) => {                   
+    
+    // const param = params.id    
+    // const job_res = await axios.get(`http://localhost:3000/api/jobs/${param}`)      
+    
+    return {
+        props: {
+            // jobData: job_res.data
+        },
+    }
 }
 
 export default account

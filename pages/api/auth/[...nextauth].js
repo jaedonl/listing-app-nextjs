@@ -4,7 +4,7 @@ import GoogleProvider from 'next-auth/providers/google'
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
 import clientPromise from '../../../util/connectDB'
 
-export default NextAuth({
+export default NextAuth({    
     providers: [        
         GithubProvider({
             clientId: process.env.GITHUB_ID,
@@ -15,5 +15,28 @@ export default NextAuth({
 			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 		}),  
     ],    
-    adapter: MongoDBAdapter(clientPromise)
+    adapter: MongoDBAdapter(clientPromise),
+    secret: process.env.SECRET,
+    callbacks: {
+        async signIn({ user }) {       
+            if (!user.posts) {
+                user.isAdmin = false;
+                user.banned = false;
+                user.posts = {
+                    jobs: [],
+                    housings: [],
+                    forsales: [],
+                    communities: [],
+                    qnas: [],
+                }    
+            }                                
+            return user;
+        },
+        async session(session, user) {            
+            if (!session.session.user?.uid) {
+                session.session.user.uid = session.user.id
+            }            
+            return session
+        },        
+    }
 })

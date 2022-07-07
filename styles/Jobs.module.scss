@@ -8,12 +8,12 @@
     .search_and_post {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         gap: 2rem;
 
         .post_link_wrapper {            
-            margin: 1rem 0;
-            display: inline-block;
-            text-align: right;            
+            margin: 1rem 0 .5rem;            
+                 
 
             .link {
                 background: #fff;
