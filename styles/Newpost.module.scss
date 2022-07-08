@@ -1,0 +1,17 @@
+.post_template {
+    padding: 0 2rem;    
+    max-width: 75rem;
+    margin: 2rem auto 0;
+    
+    .form_container {
+        .post_form {
+            .input_wrapper {
+                margin-top: 1rem;
+
+                label {
+                    display: block;
+                }
+            }
+        }
+    }
+}

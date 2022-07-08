@@ -48,8 +48,8 @@ const jobs = ({jobs}) => {
             <section className={styles.search_and_post}>
                 <SearchBar />              
                 <div className={styles.post_link_wrapper}>
-                    <Link href="/jobs/post"><a className={styles.link}>Manage posts</a></Link>
-                    <Link href="/jobs/post"><a className={styles.link}>Post new job</a></Link>
+                    <Link href="/jobs/newpost"><a className={styles.link}>Manage posts</a></Link>
+                    <Link href="/jobs/newpost"><a className={styles.link}>Post new job</a></Link>
                 </div>                
             </section>            
 
@@ -60,7 +60,7 @@ const jobs = ({jobs}) => {
                             <li key={job._id} id={job._id} className={styles.list_item} 
                                 onClick={(e) => currentListHandle(e, idx)}>
                                 <div className={styles.image_wrapper}>
-                                    <Image src={job.img[0]} layout="fill" objectFit="cover" className={styles.image} />
+                                    <Image src={job.img} layout="fill" objectFit="cover" className={styles.image} />
                                 </div>
                                 <div className={styles.job_info}>
                                     <h2 className={styles.job_title}>{job.title}</h2>
@@ -77,7 +77,7 @@ const jobs = ({jobs}) => {
                             <li key={job._id} id={job._id} className={styles.list_item} 
                                 onClick={(e) => currentListHandle(e, idx)}>
                                 <div className={styles.image_wrapper}>
-                                    <Image src={job.img[0]} layout="fill" objectFit="cover" className={styles.image} />
+                                    <Image src={job.img} layout="fill" objectFit="cover" className={styles.image} />
                                 </div>
                                 <div className={styles.job_info}>
                                     <h2 className={styles.job_title}>{job.title}</h2>
@@ -94,7 +94,7 @@ const jobs = ({jobs}) => {
                             <li key={job._id} id={job._id} className={styles.list_item} 
                                 onClick={(e) => currentListHandle(e, idx)}>
                                 <div className={styles.image_wrapper}>
-                                    <Image src={job.img[0]} layout="fill" objectFit="cover" className={styles.image} />
+                                    <Image src={job.img} layout="fill" objectFit="cover" className={styles.image} />
                                 </div>
                                 <div className={styles.job_info}>
                                     <h2 className={styles.job_title}>{job.title}</h2>
@@ -111,7 +111,7 @@ const jobs = ({jobs}) => {
                             <li key={job._id} id={job._id} className={styles.list_item} 
                                 onClick={(e) => currentListHandle(e, idx)}>
                                 <div className={styles.image_wrapper}>
-                                    <Image src={job.img[0]} layout="fill" objectFit="cover" className={styles.image} />
+                                    <Image src={job.img} layout="fill" objectFit="cover" className={styles.image} />
                                 </div>
                                 <div className={styles.job_info}>
                                     <h2 className={styles.job_title}>{job.title}</h2>

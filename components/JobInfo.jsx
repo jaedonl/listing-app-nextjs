@@ -18,7 +18,7 @@ const JobInfo = ({jobData}) => {
                 <div className={styles.title_flex}>
                     <div className={styles.job_header}>
                         <div className={styles.image_wrapper}>                            
-                            <Image src={jobData.img[0]} layout="fill" objectFit="cover" className={styles.image} />
+                            <Image src={jobData.img} layout="fill" objectFit="cover" className={styles.image} />
                         </div>     
                         <div className={styles.job_info1}>
                             <h2 className={styles.company_title}>{jobData.company}</h2>

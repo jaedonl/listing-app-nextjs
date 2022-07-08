@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 const Header = () => {
     const { data: session, status } = useSession()
     const authUser = useSelector(state => state.auth)    
-
+    
     return (
         <header className={styles.header}>
             <nav className={styles.site_nav}>

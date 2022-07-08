@@ -32,7 +32,6 @@ const JobSchema = new mongoose.Schema({
     },
     sponsorship: {
         type: Boolean,
-        required: true,
     },
     phone: {
         type: String,
@@ -43,7 +42,7 @@ const JobSchema = new mongoose.Schema({
         required: true,
     },
     img: {
-        type: [String],        
+        type: String,        
     },
     tags: {
         type: [String],
@@ -54,9 +53,6 @@ const JobSchema = new mongoose.Schema({
     website: {
         type: String,        
     },    
-    recommend: {
-        type: Number,
-    },
     author: {
         type: String,        
     }
