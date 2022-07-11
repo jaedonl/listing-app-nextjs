@@ -2,12 +2,21 @@ import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router'
 import axios from 'axios'
 import styles from "../../styles/Job.module.scss";
 import JobInfo from '../../components/JobInfo'
 
 const Job = ({jobData}) => {
     const [job, setJob] = useState(jobData)    
+    const router = useRouter()
+
+    useEffect(() => {
+        const updateViews = async () => {
+            await axios.put(`http://localhost:3000/api/jobs/${router.query.id}`, { views : jobData.views + 1})
+        }
+        updateViews()
+    }, [])
 
     return (
         <main className={styles.job_template}>
@@ -32,8 +41,7 @@ const Job = ({jobData}) => {
 }
 
 
-export const getServerSideProps = async ({params, query}) => {               
-    console.log(query)
+export const getServerSideProps = async ({params}) => {                   
     const param = params.id    
     const job_res = await axios.get(`http://localhost:3000/api/jobs/${param}`)      
     

@@ -10,7 +10,6 @@ const SearchBar = () => {
 
     const router = useRouter()
     const page = router.pathname.slice(1)     
-    console.log(page);
     
     // useEffect(() => {                            
     //     const fetchAllProducts = async () => {            

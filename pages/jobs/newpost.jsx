@@ -14,15 +14,25 @@ const post = () => {
     const { data: session } = useSession()
     const authUser = useSelector(state => state.auth)    
 
-    const handleChange = (e) => {
-        let updatedValue = e.target.value
+    useEffect(() => {
+        if (!session && !authUser.user) router.push('/auth/login')            
+        
+        if (session) {
+            setInputs((prev) => {
+                return {...prev, author: session.user.id, views: 0}
+            })            
+        }
 
-        // if (e.target.name === 'img') {
-        //     if (updatedValue === '')
-        //     setInputs((prev) => {
-        //         return {...prev, [e.target.name]: '/assets/images/jobs/default-image.png'}
-        //     })
-        // }
+        if (authUser) {
+            setInputs((prev) => {
+                return {...prev, author: authUser.user._id, views: 0}
+            })            
+        }        
+    }, [session, authUser])
+    
+
+    const handleChange = (e) => {
+        let updatedValue = e.target.value        
 
         if (e.target.name === 'tags') {
             updatedValue = e.target.value.split(',')
@@ -45,33 +55,26 @@ const post = () => {
 
         setInputs((prev) => {
             return {...prev, [e.target.name]: updatedValue}
-        })
+        })        
     }
 
 
     const handleSubmit = async (e) => {    
         e.preventDefault()            
-        setInputs((prev) => {
-            return {...prev, author: authUser.user._id}
-        })
+       
         try {
-            const res = await axios.post('http://localhost:3000/api/jobs', inputs);
+            await axios.post('http://localhost:3000/api/jobs', inputs);
 
         } catch (error) {
             console.log(error)
         }
-    }    
-
-    useEffect(() => {
-        console.log(inputs)
-    }, [inputs])
+    }        
 
     return (
         <main className={styles.post_template}>        
             <section className={styles.form_container}>                
-                <form className={styles.post_form}>
-                    <h1>Post job</h1>                    
-
+                <h1>Post job</h1>           
+                <form className={styles.post_form}>                             
                     <div className={styles.input_wrapper}>
                         <label htmlFor="title">Title</label>
                         <input

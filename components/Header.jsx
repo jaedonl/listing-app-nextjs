@@ -54,13 +54,16 @@ const Header = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link href={`/account?user=${session?.user.name}`}>
-                                <a className={styles.login}><PersonOutlineOutlined/> 
-                                    { session ? <span>{session.user.name.split(' ')[0]}</span> 
-                                    : authUser.user ? <span>{authUser.user.firstname}</span> 
-                                    : 'Login' }                 
-                                </a>
-                            </Link>
+                            { session || authUser.user 
+                                ? <Link href={`/account?user=${ session ? session?.user.id : authUser.user ? authUser.user._id : ""}`}>
+                                    <a className={styles.login}><PersonOutlineOutlined/> 
+                                        { session ? <span>{session.user.name.split(' ')[0]}</span> 
+                                        : authUser.user ? <span>{authUser.user.firstname}</span> 
+                                        : 'Login' }                 
+                                    </a>
+                                </Link>
+                                : <Link href="/auth/login"><a className={styles.login}><PersonOutlineOutlined/> Login</a></Link>
+                            }                            
                         </li>
                     </ul>                
                 </nav>

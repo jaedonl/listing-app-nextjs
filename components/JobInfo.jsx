@@ -13,16 +13,19 @@ const JobInfo = ({jobData}) => {
         <div className={`${styles.job_info} ${page && styles.page_job}`}>  
             <div className={styles.job_heading}>
                 <div className={styles.title_div}>                    
-                    <Link href={`/jobs/${jobData._id}`}><a><h1>{jobData.title}</h1></a></Link>                    
+                    <Link href={`/jobs/${jobData._id}`}><a><h1>{jobData.title}</h1></a></Link>                               
                 </div>                
                 <div className={styles.title_flex}>
                     <div className={styles.job_header}>
-                        <div className={styles.image_wrapper}>                            
-                            <Image src={jobData.img} layout="fill" objectFit="cover" className={styles.image} />
+                        <div className={styles.image_wrapper}>       
+                            { !jobData.img 
+                                ? <Image src="/assets/images/jobs/default-image.png" layout="fill" objectFit="cover" className={styles.image} />
+                                : <Image src={jobData.img} layout="fill" objectFit="cover" className={styles.image} />
+                            }                                                           
                         </div>     
                         <div className={styles.job_info1}>
                             <h2 className={styles.company_title}>{jobData.company}</h2>
-                            <Link href={jobData.website}><a className={styles.website_link}>Website link</a></Link>
+                            <a href={jobData.website} className={styles.website_link}>Website link</a>
                             <span className={styles.location_commute}>{jobData.location} ({jobData.commute_type})</span>
                             <span className={styles.pay}>${jobData.pay}</span>  
                         </div>
