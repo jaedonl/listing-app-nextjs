@@ -18,6 +18,7 @@ const account = () => {
         }      
         
         if (session) console.log(session)        
+        if (authUser) console.log(authUser)        
     }, [session, authUser])
 
     const handleSignOut = async () => {
@@ -52,11 +53,17 @@ const account = () => {
             )}
             
             <section>
+                {/* <ul>
+                    { authUser && authUser?.jobs.map((job, idx) => (
+                        <li>{job}</li>
+                    )) }
+                </ul> */}
+
                 <ul>
                     { session && session.user.posts?.jobs.map((job, idx) => (
                         <li>{job}</li>
                     )) }
-                </ul>                
+                </ul>                 
             </section>
             
         </main>

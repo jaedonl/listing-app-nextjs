@@ -60,7 +60,9 @@ const jobs = ({jobs}) => {
                             <li key={job._id} id={job._id} className={styles.list_item} 
                                 onClick={(e) => currentListHandle(e, idx)}>
                                 <div className={styles.image_wrapper}>
-                                    <Image src={job.img} layout="fill" objectFit="cover" className={styles.image} />
+                                    { !job.img ? <Image src="/assets/images/jobs/default-image.png" layout="fill" objectFit="cover" className={styles.image} />
+                                    : <Image src={job.img} layout="fill" objectFit="cover" className={styles.image} />
+                                    }                                    
                                 </div>
                                 <div className={styles.job_info}>
                                     <h2 className={styles.job_title}>{job.title}</h2>
@@ -73,11 +75,14 @@ const jobs = ({jobs}) => {
                                 <FavoriteBorder />
                             </li>   
                         ))}
+
                         {list.map((job, idx) => (
                             <li key={job._id} id={job._id} className={styles.list_item} 
                                 onClick={(e) => currentListHandle(e, idx)}>
                                 <div className={styles.image_wrapper}>
-                                    <Image src={job.img} layout="fill" objectFit="cover" className={styles.image} />
+                                    { !job.img ? <Image src="/assets/images/jobs/default-image.png" layout="fill" objectFit="cover" className={styles.image} />
+                                    : <Image src={job.img} layout="fill" objectFit="cover" className={styles.image} />
+                                    }                                    
                                 </div>
                                 <div className={styles.job_info}>
                                     <h2 className={styles.job_title}>{job.title}</h2>
@@ -90,11 +95,14 @@ const jobs = ({jobs}) => {
                                 <FavoriteBorder />
                             </li>   
                         ))}
+
                         {list.map((job, idx) => (
                             <li key={job._id} id={job._id} className={styles.list_item} 
                                 onClick={(e) => currentListHandle(e, idx)}>
                                 <div className={styles.image_wrapper}>
-                                    <Image src={job.img} layout="fill" objectFit="cover" className={styles.image} />
+                                    { !job.img ? <Image src="/assets/images/jobs/default-image.png" layout="fill" objectFit="cover" className={styles.image} />
+                                    : <Image src={job.img} layout="fill" objectFit="cover" className={styles.image} />
+                                    }                                    
                                 </div>
                                 <div className={styles.job_info}>
                                     <h2 className={styles.job_title}>{job.title}</h2>
@@ -107,11 +115,14 @@ const jobs = ({jobs}) => {
                                 <FavoriteBorder />
                             </li>   
                         ))}
+                        
                         {list.map((job, idx) => (
                             <li key={job._id} id={job._id} className={styles.list_item} 
                                 onClick={(e) => currentListHandle(e, idx)}>
                                 <div className={styles.image_wrapper}>
-                                    <Image src={job.img} layout="fill" objectFit="cover" className={styles.image} />
+                                    { !job.img ? <Image src="/assets/images/jobs/default-image.png" layout="fill" objectFit="cover" className={styles.image} />
+                                    : <Image src={job.img} layout="fill" objectFit="cover" className={styles.image} />
+                                    }                                    
                                 </div>
                                 <div className={styles.job_info}>
                                     <h2 className={styles.job_title}>{job.title}</h2>

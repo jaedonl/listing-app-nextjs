@@ -17,12 +17,12 @@ const post = () => {
     const handleChange = (e) => {
         let updatedValue = e.target.value
 
-        if (e.target.name === 'img') {
-            if (updatedValue === '')
-            setInputs((prev) => {
-                return {...prev, [e.target.name]: '/assets/images/jobs/default-image.png'}
-            })
-        }
+        // if (e.target.name === 'img') {
+        //     if (updatedValue === '')
+        //     setInputs((prev) => {
+        //         return {...prev, [e.target.name]: '/assets/images/jobs/default-image.png'}
+        //     })
+        // }
 
         if (e.target.name === 'tags') {
             updatedValue = e.target.value.split(',')

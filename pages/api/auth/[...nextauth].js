@@ -22,13 +22,6 @@ export default NextAuth({
             if (!user.posts) {
                 user.isAdmin = false;
                 user.banned = false;
-                user.posts = {
-                    jobs: [],
-                    housings: [],
-                    forsales: [],
-                    communities: [],
-                    qnas: [],
-                }    
             }                                
             return user;
         },

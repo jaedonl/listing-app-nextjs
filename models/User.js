@@ -1,11 +1,6 @@
 const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
-    username: { 
-        type: String, 
-        required: true, 
-        unique: true 
-    },
     email: { 
         type: String, 
         required: true, 
@@ -27,23 +22,6 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    posts: {
-        jobs: {
-            type: Array,
-        },
-        housings: {
-            type: Array,
-        },
-        forsales: {
-            type: Array,
-        },
-        communities: {
-            type: Array,
-        },
-        qnas: {
-            type: Array,
-        }
-    }
   },
   { timestamps: true }
 );

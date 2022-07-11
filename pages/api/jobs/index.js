@@ -15,16 +15,6 @@ const handler = async (req, res) => {
         }        
     }
 
-    // if (method === "GET" && query == ) {
-    //     try {
-    //         const jobs = await Job.find()
-    //         res.status(200).json(jobs)   
-    //     } catch (error) {
-    //         res.status(500).json(error)
-    //     }        
-    // }
-
-
     if (method === "POST") {
         try {
             const job = await Job.create(req.body)
