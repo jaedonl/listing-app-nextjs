@@ -8,13 +8,13 @@
         margin: 0 auto;
         .post_form {
             .text_editor_container {
-                border: 1px solid #ddd;
-                min-height: 10rem;
+                border: 1px solid #666;
+                min-height: 20rem;
                 cursor: text;
 
                 .text_editor_options {
                     padding: 0.5rem 1rem;
-                    border-bottom: 1px solid #ddd;
+                    border-bottom: 1px solid #666;
                     display: flex;
                     flex-flow: column;
                     row-gap: .5rem;

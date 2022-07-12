@@ -168,27 +168,7 @@ const post = () => {
             </Head>
             <section className={styles.form_container}>                
                 <h1>Post job</h1>           
-                <form className={styles.post_form}>       
-
-                    <div className={styles.input_wrapper}>
-                        <label htmlFor="description">Description</label>
-                        {/* <MyEditor /> */}
-                        <div className={styles.text_editor_container} onClick={focusEditor}>
-                            <div className={styles.text_editor_options}>
-                                <BlockStyleControls onToggle={onBlockClick} />
-                                <InlineStyleControls onToggle={onInlineClick} />
-                            </div>
-                            
-                            <div className={styles.text_editor_body}>
-                                <Editor
-                                    ref={editor}
-                                    editorState={editorState}
-                                    onChange={setEditorState}
-                                    // placeholder="Write something!"                                
-                                />
-                            </div>                            
-                        </div>       
-                    </div>
+                <form className={styles.post_form}>                           
                     
                     <div className={styles.input_section}>
                         <div className={styles.input_wrapper}>
@@ -363,6 +343,25 @@ const post = () => {
                         {error && errorMessage === 'Please input tags.' && <span className={styles.error_message}>{errorMessage}</span>}           
                     </div>                    
 
+                    <div className={styles.input_wrapper}>
+                        <label htmlFor="description">Description</label>
+                        {/* <MyEditor /> */}
+                        <div className={styles.text_editor_container} onClick={focusEditor}>
+                            <div className={styles.text_editor_options}>
+                                <BlockStyleControls onToggle={onBlockClick} />
+                                <InlineStyleControls onToggle={onInlineClick} />
+                            </div>
+                            
+                            <div className={styles.text_editor_body}>
+                                <Editor
+                                    ref={editor}
+                                    editorState={editorState}
+                                    onChange={setEditorState}
+                                    // placeholder="Write something!"                                
+                                />
+                            </div>                            
+                        </div>       
+                    </div>
                     {/* <div className={styles.input_wrapper}>
                         <label htmlFor="description">Description</label>
                         <input
