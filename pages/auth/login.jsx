@@ -31,8 +31,8 @@ const login = () => {
     const authUser = useSelector(state => state.auth)    
 
     useEffect(() => {
-        if ((session !== 'loading' && session) || authUser.user) {
-            router.push('/account')
+        if ((session !== 'loading' && session) || authUser.user) {            
+            router.back()
         }        
     }, [session, authUser])
 

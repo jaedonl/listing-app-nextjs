@@ -1,5 +1,5 @@
 .account_template {
-    max-width: 75rem;
+    max-width: 80rem;
     margin: 0 auto;
     padding: 2rem;
     
@@ -13,17 +13,16 @@
                 margin-bottom: .8rem;
             }
             .post_list {
-                display: flex;
-                justify-content: space-between;
-                flex-wrap: wrap;       
-                row-gap: 2rem;                         
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                justify-content: space-between;            
+                gap: 2rem;                         
 
                 .post_listitem {                    
                     border: 1px solid #ddd;
                     box-shadow: 0px 5px 10px -6px #000000;
                     border-radius: .5rem;
-                    padding: 1rem;      
-                    width: 30%;                  
+                    padding: 1rem;                                    
 
                     article {
                         .job_title {

@@ -1,6 +1,6 @@
 .jobs_template {
     padding: .5rem 2rem 0;    
-    max-width: 75rem;        
+    max-width: 80rem;        
     margin: 0 auto;   
     height: calc(100vh - 4.5rem);
     overflow: hidden;     
@@ -9,13 +9,14 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 2rem;
+        gap: 4rem;
 
         .post_link_wrapper {            
-            margin: 1rem 0 .5rem;            
+            margin: .5rem 0 0;            
                  
 
             .link {
+                display: inline-block;
                 background: #fff;
                 border: 1px solid #f68a06;
                 border-radius: .2rem;
@@ -59,22 +60,20 @@
                     
                     &.current {
                         border: 1px solid #f68a06;
-                        background-color: rgba(246,138,6,.3);
+                        background-color: rgba(246,138,6,.2);
                     }
                     &:first-child {
                         border-top: 1px solid transparent;
 
                         &.current {
-                            border: 1px solid #f68a06;
-                            background-color: rgba(246,138,6,.3);
+                            border: 1px solid #f68a06;                            
                         }
                     }
                     &:last-child {
                         border-bottom: 1px solid transparent;
 
                         &.current {
-                            border: 1px solid #f68a06;
-                            background-color: rgba(246,138,6,.3);
+                            border: 1px solid #f68a06;                        
                         }
                     }
 

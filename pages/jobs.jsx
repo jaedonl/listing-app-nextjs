@@ -47,7 +47,6 @@ const jobs = ({jobs}) => {
             <section className={styles.search_and_post}>
                 <SearchBar />              
                 <div className={styles.post_link_wrapper}>
-                    <Link href="/jobs/newpost"><a className={styles.link}>Manage posts</a></Link>
                     <Link href="/jobs/newpost"><a className={styles.link}>Post new job</a></Link>
                 </div>                
             </section>            

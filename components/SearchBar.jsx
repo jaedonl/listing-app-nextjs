@@ -32,7 +32,7 @@ const SearchBar = () => {
     }
 
     return (
-        <div className={styles.search_box}>
+        <div className={`${styles.search_box} ${page === 'jobs' && styles.page_jobs}`}>
             <form className={styles.search_wrapper}>
                 <div className={styles.input_wrapper}>
                     <label htmlFor="search"><Search/></label>                

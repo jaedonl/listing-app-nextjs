@@ -1,6 +1,18 @@
 .search_box {    
     width: 80%;
     flex: 7;    
+
+    &.page_jobs {
+        .search_wrapper {
+            .input_wrapper, .location_select, .search_submit {
+                height: 2.5rem;
+                .search_input {              
+                    height: 2.5rem;
+                }
+            }
+        }        
+    }
+
     .search_wrapper {
         height: 100%;
         display: flex;
@@ -29,7 +41,7 @@
             .search_input {  
                 width: 100%;                                    
                 padding: .5rem 1rem .5rem 3rem;                    
-                font-size: 1.5rem;
+                font-size: 1.2rem;
                 border: 1px solid #aaa;
                 border-radius: .2rem;
                 height: 3rem;
@@ -38,17 +50,18 @@
         
 
         .location_select {            
-            padding: .5rem 1rem;                    
-            font-size: 1.5rem;
+            padding: .5rem;                    
+            font-size: 1rem;
             border: 1px solid #aaa;
             border-radius: 0;
             height: 3rem;
             box-shadow: 0px 5px 10px -6px #000000;
+            max-width: fit-content;
         }
 
         .search_submit {            
             padding: .5rem 1rem;                    
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             background: #f68a06;
             color: #fff;
             border: none;
