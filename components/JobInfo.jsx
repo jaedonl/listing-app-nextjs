@@ -9,6 +9,23 @@ const JobInfo = ({jobData}) => {
     const router = useRouter()
     const page = router.query.id    
 
+    useEffect(() => {
+        console.log(jobData.desc);
+    }, [jobData])
+    
+    const TextEditor = (props) => {            
+        if (props.block_type === 'header-one') return <h1>{props.block.text}</h1>        
+        else if (props.block_type === 'header-two') return <h2>{props.block.text}</h2>
+        else if (props.block_type === 'header-three') return <h3>{props.block.text}</h3>
+
+        else if (props.block_type === 'unordered-list-item') return <p className={styles.text_editor_list}><span>&#8226;</span> {props.block.text}</p>
+        else if (props.block_type === 'ordered-list-item') return <p>&#8226; {props.block.text}</p>     
+
+        else if (props.block.text === '') return <br/>
+
+        else return <p>{props.block.text}</p>             
+    }    
+
     return (
         <div className={`${styles.job_info} ${page && styles.page_job}`}>  
             <div className={styles.job_heading}>
@@ -42,16 +59,15 @@ const JobInfo = ({jobData}) => {
 
                 <div className={styles.job_tags}>
                     <span>Tags</span>                
-                    <ul>
-                        {jobData.tags.map((tag, idx) => (
-                            <li key={idx}>{tag}</li>
-                        ))}
-                    </ul>
+                    <ul>{jobData.tags.map((tag, idx) => <li key={idx}>{tag}</li>)}</ul>
                 </div>
 
-                <div className={styles.job_desc}>
-                    <h2>Job description</h2>
-                    <p>{jobData.desc}</p>
+                <div className={styles.job_desc}>                                        
+                    {jobData.desc.map((block, idx) => {
+                        if (block.type === 'unordered-list-item') return <TextEditor block_type={block.type} block={block} />                        
+                        else if (block.type === 'ordered-list-item') return (<ol><TextEditor block_type={block.type} block={block} /></ol>)
+                        else return <TextEditor block_type={block.type} block={block} />
+                    })}                    
                 </div>                
             </div>                                
         </div> 

@@ -5,6 +5,18 @@
     
     .account_header {        
         margin-bottom: 2rem;
+
+        .btn_container {
+            margin-top: 1rem;
+            .btn {
+                // padding: .5rem;
+                // width: 4rem;
+                // border-radius: .2rem;
+                // border: 1px solid #eee;
+                // color: #fff;
+                // background-color: grey;
+            }
+        }
     }
     
     .my_posts {        
@@ -21,10 +33,11 @@
                 .post_listitem {                    
                     border: 1px solid #ddd;
                     box-shadow: 0px 5px 10px -6px #000000;
-                    border-radius: .5rem;
-                    padding: 1rem;                                    
+                    border-radius: .5rem;                                                     
 
                     article {
+                        padding: 1rem;                           
+
                         .job_title {
                             margin: 0 0 .5rem;
                         }
@@ -46,6 +59,26 @@
                         .job_tags {
                             span {
                                 font-size: .8rem;
+                            }
+                        }
+
+                        .btn_container {
+                            display: flex;
+                            gap: .5rem;
+
+                            .btn {
+                                width: 4rem;
+                                padding: .2rem 0;
+                                border: 1px solid #eee;
+                                border-radius: .3rem;
+                                color: #fff;
+
+                                &.edit_btn {
+                                    background-color: #f68a06;
+                                }
+                                &.delete_btn {
+                                    background-color: grey;
+                                }
                             }
                         }
                     }

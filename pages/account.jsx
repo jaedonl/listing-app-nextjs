@@ -70,7 +70,9 @@ const account = () => {
                     <h2>Hi, { session ? session.user.name.split(' ')[0] : authUser.user.firstname }</h2>
                     You are signed in as { session ? session.user.email : authUser.user.email } <br />
                     
-                    <button onClick={handleSignOut}>Sign out</button>
+                    <div className={styles.btn_container}>
+                        <button className={styles.btn} onClick={handleSignOut}>Sign out</button>
+                    </div>                    
                 </section>
             )}
             
@@ -85,7 +87,7 @@ const account = () => {
                             <article>
                                 <h4 className={styles.job_title}>{job.title}</h4> 
                                 <Moment date={job.createdAt} format="MM/DD/YYYY" className={styles.post_date} />
-                                <p className={styles.job_desc}>{job.desc}</p>
+                                <p className={styles.job_desc}>{job.desc[0].text}</p>
                                 <p className={styles.job_tags}>
                                     {job.tags.map((tag, idx) => {
                                         let last = job.tags.length-1
@@ -93,9 +95,9 @@ const account = () => {
                                     })}  
                                 </p>
                                 
-                                <div>
-                                    <button>Edit</button>
-                                    <button>Delete</button>
+                                <div className={styles.btn_container}>
+                                    <button className={`${styles.btn} ${styles.edit_btn}`}>Edit</button>
+                                    <button className={`${styles.btn} ${styles.delete_btn}`}>Delete</button>
                                 </div>
                             </article>
                         </li>

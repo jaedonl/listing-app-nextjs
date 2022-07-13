@@ -1,12 +1,9 @@
 .job_template {    
     max-width: 80rem;        
-    margin: 2rem auto 0;
-    padding: 2rem;
-    background-color: #fff;
-    border: 1px solid #eee;
-    border-radius: .5rem;
+    margin: 2rem auto 0;    
 
     .breadcrumb {
+        padding: 0 2rem;
         ul {
             display: flex;
 
@@ -29,5 +26,8 @@
             }
             
         }
-    }    
+    }   
+    .job_section {
+        padding: 0 2rem;        
+    } 
 }

@@ -5,10 +5,8 @@ import { useRouter } from 'next/router';
 import { useSession } from "next-auth/react"
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios';
-import MyEditor from '../../components/MyEditor';
-import {Editor, EditorState, RichUtils} from 'draft-js';
+import {Editor, EditorState, RichUtils, convertToRaw} from 'draft-js';
 import 'draft-js/dist/Draft.css';
-import { toggleClass } from 'dom-helpers';
 
 
 const post = () => {
@@ -17,45 +15,32 @@ const post = () => {
     const [error, setError] = useState(false)
     const [errorMessage, setErrorMessage] = useState(null)
     const { data: session } = useSession()
-    const authUser = useSelector(state => state.auth)    
+    const authUser = useSelector(state => state.auth)        
     const router = useRouter()
-
-    const [editorState, setEditorState] = useState(
-        EditorState.createEmpty()
-    );
+    const [activeBlock, setActiveBlock] = useState(null)
+    const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const editor = useRef(null);
+    let descInput
 
-    function focusEditor() {
+    const focusEditor = () => {
         editor.current.focus();
-    }
-
-    useEffect(() => {
-        // console.log(inputs)       
-        console.log(editor.current); 
-    })
-
+    }        
+    
     const StyleButton = (props) => {
         let onClickButton = (e) => {
             e.preventDefault();
-            props.onToggle(props.style);       
-            e.target.classList.add(`${styles.active}`)
-
-            e.currentTarget.classList.add(`${styles.active}`)
+            props.onToggle(props.style);                              
+            activeBlock === props.label ? setActiveBlock(null) : setActiveBlock(props.label)  
         };
-        return <button onMouseDown={onClickButton} className={`${styles.text_editor_options_button}`}>{props.label}</button>;
-    };
+        return <button onMouseDown={onClickButton} className={`${styles.text_editor_options_button} ${ activeBlock === props.label ? styles.active : ''}`}>{props.label}</button>;
+    };    
     
     const BLOCK_TYPES = [
         { label: "H1", style: "header-one" },
         { label: "H2", style: "header-two" },
         { label: "H3", style: "header-three" },
-        { label: "H4", style: "header-four" },
-        { label: "H5", style: "header-five" },
-        { label: "H6", style: "header-six" },
-        { label: "Blockquote", style: "blockquote" },
         { label: "UL", style: "unordered-list-item" },
         { label: "OL", style: "ordered-list-item" },
-        { label: "Code Block", style: "code-block" }
     ];
 
     const BlockStyleControls = (props) => {
@@ -66,47 +51,27 @@ const post = () => {
                     key={type.label}
                     label={type.label}
                     onToggle={props.onToggle}
-                    style={type.style}                    
+                    style={type.style}       
                 />
                 ))}
             </div>
         );
-    };
-
-    const INLINE_STYLES = [
-        { label: "Bold", style: "BOLD" },
-        { label: "Italic", style: "ITALIC" },
-        { label: "Underline", style: "UNDERLINE" },
-        { label: "Monospace", style: "CODE" }
-    ];
-    const InlineStyleControls = (props) => {
-        return (
-            <div className={styles.inline_types}>
-                {INLINE_STYLES.map((type) => (
-                <StyleButton
-                    key={type.label}
-                    label={type.label}
-                    onToggle={props.onToggle}
-                    style={type.style}
-                />
-                ))}
-            </div>
-        );
-    };
-
-    const onInlineClick = (e) => {
-        let nextState = RichUtils.toggleInlineStyle(editorState, e);
-        setEditorState(nextState);
-    };
+    }
     
     const onBlockClick = (e) => {
         let nextState = RichUtils.toggleBlockType(editorState, e);
         setEditorState(nextState);                
     };
 
+    useEffect(() => {
+        descInput = convertToRaw(editorState.getCurrentContent()).blocks        
+        setInputs({...inputs, desc: descInput})            
+    }, [editorState])
+
+
 
     useEffect(() => {
-        if (!session && !authUser.user) router.push('/auth/login')            
+        if (!session && !authUser.user) router.push('/auth/login')                    
         if (session) {
             setInputs((prev) => {
                 return {...prev, author: session.user?.id, views: 0, job_type: 'full-time', commute_type: 'remote', sponsorship: false}
@@ -115,11 +80,10 @@ const post = () => {
         if (authUser) {
             setInputs((prev) => {
                 return {...prev, author: authUser.user?._id, views: 0, job_type: 'full-time', commute_type: 'remote', sponsorship: false}
-            })            
-        }                
+            })                                    
+        }                        
     }, [session, authUser])    
-
-
+ 
 
     const handleChange = (e) => {
         let updatedValue = e.target.value        
@@ -148,15 +112,16 @@ const post = () => {
         })        
     }
 
-
     const handleSubmit = async (e) => {    
-        e.preventDefault()                   
-        try {
-            await axios.post('http://localhost:3000/api/jobs', inputs);
-        } catch (error) {
-            console.log(error)
-        }
-    }        
+        e.preventDefault()                             
+        // try {
+        //     await axios.post('http://localhost:3000/api/jobs', inputs);
+        // } catch (error) {
+        //     console.log(error)
+        // }
+
+        console.log(inputs);
+    }            
 
     return (
         <main className={styles.post_template}>        
@@ -168,7 +133,7 @@ const post = () => {
             </Head>
             <section className={styles.form_container}>                
                 <h1>Post job</h1>           
-                <form className={styles.post_form}>                           
+                <form className={styles.post_form}>                                               
                     
                     <div className={styles.input_section}>
                         <div className={styles.input_wrapper}>
@@ -341,40 +306,20 @@ const post = () => {
                             onChange={handleChange}
                         />
                         {error && errorMessage === 'Please input tags.' && <span className={styles.error_message}>{errorMessage}</span>}           
-                    </div>                    
+                    </div>       
 
                     <div className={styles.input_wrapper}>
                         <label htmlFor="description">Description</label>
-                        {/* <MyEditor /> */}
                         <div className={styles.text_editor_container} onClick={focusEditor}>
                             <div className={styles.text_editor_options}>
                                 <BlockStyleControls onToggle={onBlockClick} />
-                                <InlineStyleControls onToggle={onInlineClick} />
                             </div>
                             
                             <div className={styles.text_editor_body}>
-                                <Editor
-                                    ref={editor}
-                                    editorState={editorState}
-                                    onChange={setEditorState}
-                                    // placeholder="Write something!"                                
-                                />
+                                <Editor ref={editor} editorState={editorState} onChange={setEditorState} />
                             </div>                            
                         </div>       
-                    </div>
-                    {/* <div className={styles.input_wrapper}>
-                        <label htmlFor="description">Description</label>
-                        <input
-                            type="text"
-                            id="desc"
-                            name="desc"                            
-                            placeholder="Description"                            
-                            aria-label="input description"
-                            className={styles.form_input}
-                            onChange={handleChange}
-                        />
-                        {error && errorMessage === 'Please input description.' && <span className={styles.error_message}>{errorMessage}</span>}           
-                    </div>                                                             */}                             
+                    </div>                                                     
 
                     <div className={styles.post_btn_wrapper}>
                         <button type="button" aria-label="post button" className={styles.post_btn} onClick={handleSubmit}>Post</button>
