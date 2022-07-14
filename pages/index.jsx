@@ -13,7 +13,7 @@ import { useRouter } from 'next/router'
 export default function Home({jobs, jobs2, housings, housings2}) {
     const { data: session, status } = useSession()
     const router = useRouter()
-
+    
     return (
         <div className={styles.container}>
             <Head>
@@ -45,13 +45,14 @@ export default function Home({jobs, jobs2, housings, housings2}) {
                 </div>   
                 </section>
             </main>   
-            {/* )} */}                    
         </div>
     )
 }
 
-export const getServerSideProps = async (context) => {         
-    const jobs_res          = await axios.get('http://localhost:3000/api/jobs')
+export const getServerSideProps = async () => {         
+    const jobs_res          = await axios.get('http://localhost:3000/api/jobs', {
+        params: { _limit: 10 }
+    })
     const housings_res      = await axios.get('http://localhost:3000/api/housings')     
     // const forsales_res      = await axios.get('/api/forsales')     
     // const communities_res   = await axios.get('/api/communities')     

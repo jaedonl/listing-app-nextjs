@@ -1,54 +1,15 @@
 .post_template {
     padding: 0 2rem;    
     max-width: 80rem;
-    margin: 2rem auto 0;
+    margin: 2rem auto;
         
     .form_container {
-        width: 70%;
+        width: 85%;
         margin: 0 auto;
-        .post_form {
-            .text_editor_container {
-                border: 1px solid #666;
-                min-height: 20rem;
-                cursor: text;
-
-                .text_editor_options {
-                    padding: 0.5rem 1rem;
-                    border-bottom: 1px solid #666;
-                    display: flex;
-                    flex-flow: column;
-                    row-gap: .5rem;
-
-                    .block_types {
-                        display: flex;
-                        gap: 1rem;                        
-                    }
-                    .inline_types {
-                        display: flex;
-                        gap: 1rem;   
-                    }
-
-                    .text_editor_options_button {
-                        background: none;
-                        border: none;
-                        color: #666;
-                        cursor: pointer;
-
-                        &:hover {
-                            color: #f68a06;
-                        } 
-                        
-                        &.active {
-                            color: #f68a06 !important;
-                        }
-                    }
-                }                
-                .text_editor_body {
-                    padding: 1rem;
-                }
-            }
-            
-
+        .page_title {
+            margin-bottom: 0;
+        }
+        .post_form {                        
             .input_section {
                 display: flex;          
                 gap: 1rem;  
@@ -100,6 +61,56 @@
                     transition: all 0.1s ease-in;
                     position: relative;  
                     width: 10rem;                  
+                }
+            }
+
+            .text_editor_container {
+                border: 1px solid #666;
+                height: 27em;
+                cursor: text;
+                overflow-y: scroll;
+                position: relative;
+
+                .text_editor_options {
+                    padding: 0.5rem 1rem;
+                    border-bottom: 1px solid #666;
+                    background: #fff;
+                    display: flex;
+                    flex-flow: column;
+                    row-gap: .5rem;
+                    position: sticky;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    z-index: 2;
+
+                    .block_types {
+                        display: flex;
+                        gap: 1rem;                        
+                    }
+                    .inline_types {
+                        display: flex;
+                        gap: 1rem;   
+                    }
+
+                    .text_editor_options_button {
+                        background: none;
+                        border: none;
+                        color: #666;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: #f68a06;
+                        } 
+                        
+                        &.active {
+                            color: #f68a06 !important;
+                        }
+                    }
+                }                
+                .text_editor_body {                    
+                    padding: 1rem;
+                    z-index: 0;
                 }
             }
         }

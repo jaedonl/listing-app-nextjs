@@ -8,13 +8,16 @@
 
         .btn_container {
             margin-top: 1rem;
-            .btn {
-                // padding: .5rem;
-                // width: 4rem;
-                // border-radius: .2rem;
-                // border: 1px solid #eee;
-                // color: #fff;
-                // background-color: grey;
+            .btn {                
+                padding: .2rem .5rem;
+                border-radius: .2rem;
+                border: 1px solid #eee;
+                color: #fff;
+                background-color: grey;
+                cursor: pointer;
+                &:hover {
+                    background-color: #999;
+                }  
             }
         }
     }
@@ -38,6 +41,9 @@
                     article {
                         padding: 1rem;                           
 
+                        a {
+                            cursor: pointer;
+                        }
                         .job_title {
                             margin: 0 0 .5rem;
                         }
@@ -72,12 +78,21 @@
                                 border: 1px solid #eee;
                                 border-radius: .3rem;
                                 color: #fff;
+                                cursor: pointer;
+                                position: relative;                                
 
                                 &.edit_btn {
                                     background-color: #f68a06;
+
+                                    &:hover {
+                                        background-color: orange;
+                                    }
                                 }
                                 &.delete_btn {
                                     background-color: grey;
+                                    &:hover {
+                                        background-color: #999;
+                                    }                                    
                                 }
                             }
                         }

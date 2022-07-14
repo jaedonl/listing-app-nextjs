@@ -71,13 +71,14 @@ const post = () => {
 
 
     useEffect(() => {
-        if (!session && !authUser.user) router.push('/auth/login')                    
-        if (session) {
+        if (!session && !authUser.user) router.push('/auth/login')        
+
+        if (session) {            
             setInputs((prev) => {
                 return {...prev, author: session.user?.id, views: 0, job_type: 'full-time', commute_type: 'remote', sponsorship: false}
             })            
         }
-        if (authUser) {
+        else if (authUser) {
             setInputs((prev) => {
                 return {...prev, author: authUser.user?._id, views: 0, job_type: 'full-time', commute_type: 'remote', sponsorship: false}
             })                                    
@@ -114,13 +115,14 @@ const post = () => {
 
     const handleSubmit = async (e) => {    
         e.preventDefault()                             
-        // try {
-        //     await axios.post('http://localhost:3000/api/jobs', inputs);
-        // } catch (error) {
-        //     console.log(error)
-        // }
-
-        console.log(inputs);
+        try {
+            await axios.post('http://localhost:3000/api/jobs', inputs);
+            alert('Post created successfully.')
+        } catch (error) {
+            console.log(error)            
+        }
+        
+        router.push('/account')
     }            
 
     return (
@@ -132,7 +134,7 @@ const post = () => {
                 <link rel="icon" href="/favicon.ico" />                
             </Head>
             <section className={styles.form_container}>                
-                <h1>Post job</h1>           
+                <h1 className={styles.page_title}>Post job</h1>           
                 <form className={styles.post_form}>                                               
                     
                     <div className={styles.input_section}>

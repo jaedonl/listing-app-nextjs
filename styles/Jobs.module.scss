@@ -49,10 +49,10 @@
                     display: flex;
                     gap: 1rem;                    
                     padding: .5rem;                    
-                    position: relative;
+                    position: relative;                    
                     border: 1px solid transparent;
                     border-bottom: 1px solid #ddd;
-                    border-right: 1px solid #ddd;
+                    border-right: none;
 
                     &:hover {
                         cursor: pointer;
@@ -95,7 +95,14 @@
                         .job_title {
                             font-size: 1rem;
                             margin-bottom: .3rem;
+                            margin-right: .8rem;
                             color: #f68a06;
+                            overflow: hidden;
+                            text-overflow: ellipsis;    
+                            display: -webkit-box !important;
+                            -webkit-line-clamp: 1;
+                            -webkit-box-orient: vertical;
+                            white-space: normal;
                         }
                         span {
                             margin-bottom: .2rem;
@@ -126,9 +133,41 @@
                     }
                 }
             }
+
+            .pagination_wrapper {
+                margin: 1rem 0;
+
+                .paginationBttns {
+                    // width: 80%;
+                    margin: 0 auto;
+                    // height: 40px;
+                    list-style: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: .5rem;   
+                    
+                    a {
+                      padding: 5px 10px;
+                      border-radius: 5px;
+                      border: 1px solid #ddd;
+                      cursor: pointer;
+                        
+                        &:hover {
+                          background-color: #f68a06;
+                          color: #fff;
+                        }        
+                    }
+                }
+                .paginationActive a {
+                    border: 3px solid #f68a06;
+                }
+            }
+
         }
         .preview {
-            flex: 1.5;            
+            flex: 1.5;          
+            border-left: 1px solid #ddd;  
         }
     }
 }

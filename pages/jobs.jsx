@@ -9,14 +9,27 @@ import axios from 'axios';
 import { FavoriteBorder, Favorite } from '@mui/icons-material';
 import { useRouter } from 'next/router';
 import Moment from 'react-moment';
+import ReactPaginate from 'react-paginate';
+
 
 const jobs = ({jobs}) => {
-    const [list, setList] = useState(jobs)
-    const [current, setCurrent] = useState(jobs[0])    
     const router = useRouter()        
+    const [list, setList] = useState(jobs)
+    const [current, setCurrent] = useState(jobs[0])   
+    const [pageNumber, setPageNumber] = useState(0);
+    const listPerPage = 10;
+    const pageVisted = pageNumber * listPerPage;    
+
+    var displayLists, pageCount;
+    if (list) {
+        displayLists = list.slice(pageVisted, pageVisted + listPerPage);
+        pageCount = Math.ceil(list.length / listPerPage)
+    }
+    const changePage = ({selected}) => setPageNumber(selected) 
+    
 
     const currentListHandle = (e, idx) => {       
-        setCurrent(list[idx])
+        setCurrent(displayLists[idx])
 
         var items = document.querySelectorAll(`.${styles.list_item}`)             
         items.forEach(item => {
@@ -26,7 +39,7 @@ const jobs = ({jobs}) => {
         });
         e.currentTarget.classList.add(`${styles.current}`) 
 
-        router.push(`/jobs?current=${jobs[idx]._id}`)         
+        router.push(`/jobs?current=${displayLists[idx]._id}`)         
     }
 
     useEffect(() => {        
@@ -54,7 +67,8 @@ const jobs = ({jobs}) => {
             <section className={styles.joblist_section}>
                 <section className={styles.list}>
                     <ul>
-                        {list.map((job, idx) => (
+                        {list && 
+                        displayLists.map((job, idx) => (
                             <li key={job._id} id={job._id} className={styles.list_item} 
                                 onClick={(e) => currentListHandle(e, idx)}>
                                 <div className={styles.image_wrapper}>
@@ -73,7 +87,20 @@ const jobs = ({jobs}) => {
                                 <FavoriteBorder />
                             </li>   
                         ))}
-                    </ul>                       
+                    </ul>               
+
+                    <div className={styles.pagination_wrapper}>
+                        {list && <ReactPaginate 
+                            previousLabel={"Prev"}
+                            nextLabel={"Next"}
+                            pageCount={pageCount}
+                            onPageChange={changePage}
+                            containerClassName={styles.paginationBttns}
+                            previousLinkClassName={styles.previousBttn}
+                            nextLinkClassName={styles.nextBttn}
+                            disabledClassName={styles.paginationDisabled}
+                            activeClassName={styles.paginationActive} />}
+                    </div>        
                 </section>
                 
                 <section className={styles.preview}>          
@@ -84,7 +111,7 @@ const jobs = ({jobs}) => {
     )
 }
 
-export const getServerSideProps = async (context) => {         
+export const getServerSideProps = async () => {         
     const jobs_res = await axios.get('http://localhost:3000/api/jobs')                 
     
     return {

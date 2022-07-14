@@ -6,15 +6,21 @@ const handler = async (req, res) => {
     
     await dbConnect()
 
-    if (method === "GET") {
+    if (method === "GET") {        
+        let key = Object.keys(req.query)[0]
+
         if (req.query) {
             try {
-                const jobs = await Job.find(req.query)
-                res.status(200).json(jobs)              
+                let jobs
+                if (key === '_limit') jobs = await Job.find().limit(8)                
+                else jobs = await Job.find(req.query)
+
+                res.status(200).json(jobs)        
+
             } catch (error) {
                 res.status(500).json(error)
-            }   
-        }
+            }
+        }        
         else {
             try {
                 const jobs = await Job.find()

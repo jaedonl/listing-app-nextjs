@@ -7,24 +7,20 @@ import Moment from 'react-moment';
 
 const JobInfo = ({jobData}) => {      
     const router = useRouter()
-    const page = router.query.id    
-
-    useEffect(() => {
-        console.log(jobData.desc);
-    }, [jobData])
+    const page = router.query.id        
     
     const TextEditor = (props) => {            
-        if (props.block_type === 'header-one') return <h1>{props.block.text}</h1>        
-        else if (props.block_type === 'header-two') return <h2>{props.block.text}</h2>
-        else if (props.block_type === 'header-three') return <h3>{props.block.text}</h3>
+        if (props.block_type === 'header-one' && props.block.text !== '') return <h1>{props.block.text}</h1>        
+        else if (props.block_type === 'header-two' && props.block.text !== '') return <h2>{props.block.text}</h2>
+        else if (props.block_type === 'header-three' && props.block.text !== '') return <h3>{props.block.text}</h3>
 
         else if (props.block_type === 'unordered-list-item') return <p className={styles.text_editor_list}><span>&#8226;</span> {props.block.text}</p>
         else if (props.block_type === 'ordered-list-item') return <p>&#8226; {props.block.text}</p>     
 
         else if (props.block.text === '') return <br/>
-
+        else if (props.block.text === '') return <br/>
         else return <p>{props.block.text}</p>             
-    }    
+    }        
 
     return (
         <div className={`${styles.job_info} ${page && styles.page_job}`}>  
@@ -59,7 +55,9 @@ const JobInfo = ({jobData}) => {
 
                 <div className={styles.job_tags}>
                     <span>Tags</span>                
-                    <ul>{jobData.tags.map((tag, idx) => <li key={idx}>{tag}</li>)}</ul>
+                    <ul>
+                        {jobData.tags.map((tag, idx) => <li key={idx}>{tag}{idx !== jobData.tags.length-1 && ','}</li>)}
+                    </ul>
                 </div>
 
                 <div className={styles.job_desc}>                                        

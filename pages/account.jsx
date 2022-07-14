@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
 import styles from "../styles/Account.module.scss";
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { useSession, signOut } from "next-auth/react"
 import { useSelector, useDispatch } from 'react-redux';
 import { loggingOut} from '../redux/auth/authSlice';
@@ -11,27 +12,27 @@ import Moment from 'react-moment';
 const account = () => {    
     const [jobs, setJobs] = useState(null)
     const [housings, setHousings] = useState(null)
-    const { data: session } = useSession()        
+    const { data: session, status } = useSession()        
     const router = useRouter()
     const authUser = useSelector(state => state.auth)    
     const dispatch = useDispatch()
+    
+    
+    useEffect(() => { 
+        if ((status !== 'loading' && status !== 'authenticated') && (!authUser.isLoading && !authUser.user)) router.push('/auth/login')        
 
-    useEffect(() => {
-        if (!session && !authUser.user) router.push('/auth/login')            
-        
         if (session) {
-            console.log(session)        
+            console.log(session);
             const myJobPosts = async () => {
-                const res = await axios.get(`http://localhost:3000/api/jobs`, 
+                const res = await axios.get('http://localhost:3000/api/jobs', 
                     { params: { author: session.user.id } }
                 )                
                 setJobs(res.data)
             }
             myJobPosts()
-        }
-
-        if (authUser.user) {
-            console.log(authUser)            
+        }        
+        else if (authUser.user) {
+            console.log(authUser.user);
             const myJobPosts = async () => {
                 const res = await axios.get(`http://localhost:3000/api/jobs`, 
                     { params: { author: authUser.user._id } }
@@ -39,7 +40,7 @@ const account = () => {
                 setJobs(res.data)
             }
             myJobPosts()
-        }                
+        }        
 
     }, [session, authUser])
     
@@ -53,8 +54,39 @@ const account = () => {
             dispatch(loggingOut())
         }
     }
+
+    const handleEditPost = async (id) => {
+        
+    }
+
+    const handleRemovePost = async (id, postType) => {
+        let isExecuted = confirm("Are you sure to delete this post?");        
+
+        if (isExecuted) {
+            try {
+                await axios.delete(`http://localhost:3000/api/${postType}/${id}`)                   
+                onPostDelete(id, postType)
+
+            } catch (error) {                
+                console.log(error);            
+            }           
+        }               
+    }
+
     
-    
+    const onPostDelete = async (id, postType) => {
+        
+        if (postType === 'jobs') {
+            if (authUser.user) {
+                const res = await axios.get(`http://localhost:3000/api/jobs`, { params: { author: authUser.user._id } })                  
+                setJobs(res.data.filter(job => job._id !== id))
+            }
+            else if (session) {
+                const res = await axios.get(`http://localhost:3000/api/jobs`, { params: { author: session.user.id } })                 
+                setJobs(res.data.filter(job => job._id !== id)) 
+            }            
+        }
+    }
 
     return (
         <main className={styles.account_template}>
@@ -85,7 +117,7 @@ const account = () => {
                     { jobs && jobs.map((job) => (
                         <li key={job._id} className={styles.post_listitem}>
                             <article>
-                                <h4 className={styles.job_title}>{job.title}</h4> 
+                                <Link href={`/jobs/${job._id}`}><h4 className={styles.job_title}>{job.title}</h4></Link>                                
                                 <Moment date={job.createdAt} format="MM/DD/YYYY" className={styles.post_date} />
                                 <p className={styles.job_desc}>{job.desc[0].text}</p>
                                 <p className={styles.job_tags}>
@@ -96,8 +128,8 @@ const account = () => {
                                 </p>
                                 
                                 <div className={styles.btn_container}>
-                                    <button className={`${styles.btn} ${styles.edit_btn}`}>Edit</button>
-                                    <button className={`${styles.btn} ${styles.delete_btn}`}>Delete</button>
+                                    <button className={`${styles.btn} ${styles.edit_btn}`} onClick={()=>handleEditPost(job._id)}>Edit</button>
+                                    <button className={`${styles.btn} ${styles.delete_btn}`} onClick={()=>handleRemovePost(job._id, 'jobs')}>Delete</button>
                                 </div>
                             </article>
                         </li>

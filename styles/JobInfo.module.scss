@@ -112,33 +112,35 @@
             }
         }
         .job_desc {
-            margin-top: 2rem;
-            padding-top: 1rem;
+            margin-top: 2rem;            
             border-top: 1px solid #eee;          
             
             h1 {
-                margin: 4rem 0 1rem;                
+                margin: 2rem 0 1rem;    
+                font-weight: 600;            
             }
             h2 {
-                margin: 3rem 0 .5rem;
+                margin: 2rem 0 .5rem;
+                font-weight: 600;            
             }
             h3 {
-                margin: 3rem 0 .2rem;
+                margin: 2rem 0 .2rem;
+                font-weight: 600;            
             }
             p {
                 margin: .5rem 0 .5rem;
+                line-height: 1.5;
             }
             
             .text_editor_list {
                 display: flex;
-                column-gap: .2rem;
+                column-gap: .4rem;
                 margin: 1rem 0;
-            }
 
-            &:first-child {
-                margin-top: 2rem !important;
-                
-            }
+                span {
+                    font-weight: 900;
+                }
+            }         
         }
     }        
 }

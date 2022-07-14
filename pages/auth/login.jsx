@@ -10,14 +10,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loginStart, loginSuccess, loginFailure } from '../../redux/auth/authSlice';
 
 const providers = [
-    { 
-        name: 'github', 
-        Icon: GitHub,
-    },
-    { 
-        name: 'google', 
-        Icon: Google
-    },
+    { name: 'github', Icon: GitHub},
+    { name: 'google', Icon: Google},
 ]    
 
 const login = () => {
