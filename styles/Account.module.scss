@@ -34,9 +34,10 @@
                 gap: 2rem;                         
 
                 .post_listitem {                    
-                    border: 1px solid #ddd;
+                    border: 1px solid #bbb;
                     box-shadow: 0px 5px 10px -6px #000000;
                     border-radius: .5rem;                                                     
+                    background-color: #fff;
 
                     article {
                         padding: 1rem;                           
@@ -75,7 +76,7 @@
                             .btn {
                                 width: 4rem;
                                 padding: .2rem 0;
-                                border: 1px solid #eee;
+                                border: 1px solid #ddd;
                                 border-radius: .3rem;
                                 color: #fff;
                                 cursor: pointer;

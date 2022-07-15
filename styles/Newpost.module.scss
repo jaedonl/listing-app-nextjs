@@ -4,12 +4,18 @@
     margin: 2rem auto;
         
     .form_container {
-        width: 85%;
+        width: 90%;
         margin: 0 auto;
         .page_title {
             margin-bottom: 0;
         }
-        .post_form {                        
+        .post_form {         
+            background-color: #fff;               
+            border: 1px solid #bbb;
+            border-radius: .5rem;
+            padding: 1rem 2rem 2rem;
+            margin-top: 1rem;
+
             .input_section {
                 display: flex;          
                 gap: 1rem;  

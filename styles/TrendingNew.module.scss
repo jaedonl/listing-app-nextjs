@@ -9,7 +9,7 @@
         gap: 2rem;
         height: 100%;
         position: relative;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid #bbb;
 
         .tab {            
             height: 100%;
@@ -48,7 +48,7 @@
                 padding-right: 1rem;
             }
             &:last-child {
-                border-left: 1px solid #ddd;
+                border-left: 1px solid #bbb;
                 padding-left: 1rem;
             }
 
@@ -58,7 +58,7 @@
             ul {
                 li {                    
                     padding: 1rem 0;                    
-                    border-bottom: 1px solid #eee;                         
+                    border-bottom: 1px solid #ddd;                         
                     &:last-child { 
                         border-bottom: none;
                     }    

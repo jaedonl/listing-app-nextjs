@@ -4,6 +4,7 @@
     margin: 0 auto;   
     height: calc(100vh - 4.5rem);
     overflow: hidden;     
+    
 
     .search_and_post {
         display: flex;
@@ -37,7 +38,7 @@
         height: calc(100% - 4rem);     
         margin-top: .5rem;  
         background-color: #fff;   
-        border: 1px solid #ddd;
+        border: 1px solid #bbb;
         border-radius: .2rem;
         
         .list {
@@ -51,7 +52,7 @@
                     padding: .5rem;                    
                     position: relative;                    
                     border: 1px solid transparent;
-                    border-bottom: 1px solid #ddd;
+                    border-bottom: 1px solid #bbb;
                     border-right: none;
 
                     &:hover {
@@ -167,7 +168,7 @@
         }
         .preview {
             flex: 1.5;          
-            border-left: 1px solid #ddd;  
+            border-left: 1px solid #bbb;  
         }
     }
 }

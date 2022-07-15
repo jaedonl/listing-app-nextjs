@@ -14,12 +14,13 @@
 
             .grid_item {
                 position: relative;        
-                border: 1px solid #ddd;
+                border: 1px solid #bbb;
                 display: flex;
                 align-items: center;
                 justify-content: center;    
                 cursor: pointer;   
                 padding: .5rem 0;             
+                background-color: #fff;
 
                 a {
                     flex: 1;
